@@ -46,6 +46,9 @@ public class EmployeeBean {
 			this.emp_bnk_ifsc = emp_bnk_ifsc;
 			this.emp_password = emp_password;
 		}
+		public EmployeeBean() {
+			// TODO Auto-generated constructor stub
+		}
 		public int getEmp_hi_id() {
 			return emp_hi_id;
 		}

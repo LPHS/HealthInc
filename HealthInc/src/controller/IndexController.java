@@ -44,8 +44,28 @@ public class IndexController extends HttpServlet {
 				response.sendRedirect("/HealthInc/Index.jsp");
 			}
 			else if(source.equals("register")){
-				EmployeeBean e;
-				/*use request.getParameter() and set to employee bean e*/
+				EmployeeBean e=new EmployeeBean();
+				e.setEmp_name(request.getParameter("empName"));
+				e.setEmp_id(Integer.parseInt(request.getParameter("empId")));
+				e.setEmp_dob(request.getParameter("dob"));
+				e.setEmp_gen(request.getParameter("gender"));
+				e.setEmp_email(request.getParameter("mailId"));
+				e.setEmp_alt_email(request.getParameter("altMailId"));
+				e.setEmp_ph_no(request.getParameter("phnNo")); 
+				e.setEmp_mob_no(request.getParameter("altMobNo"));
+				e.setEmp_policy_start_date(request.getParameter("polStDate")); 
+				e.setEmp_policy_period(Integer.parseInt(request
+						.getParameter("polPeriod")));
+				e.setEmp_tot_sum_ins(Double.parseDouble(request
+						.getParameter("totSum")));
+				e.setEmp_prem_amt(Double.parseDouble(request
+						.getParameter("pamt")));
+				e.setEmp_acc_no(request.getParameter("bankAccNo"));
+				e.setEmp_bnk_name(request.getParameter("bankName"));
+				e.setEmp_bnk_ifsc(request.getParameter("ifsc"));
+				e.setEmp_password(request.getParameter("pwd"));
+				
+
 				
 				boolean flag=is.registerEmployee(e);
 				if(flag==true){

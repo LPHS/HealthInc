@@ -159,6 +159,10 @@ return true;
 				<td><input type="text" name="empId" id="empId"></td>
 			</tr>
 			<tr>
+				<td>Password</td>
+				<td><input type="password" name="pwd" id="pwd"></td>
+			</tr>
+			<tr>
 				<td>Date Of Birth</td>
 				<td><input type="date" name="dob" id="dob"></td>
 			</tr>
