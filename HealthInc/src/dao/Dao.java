@@ -1,25 +1,27 @@
-package service;
+package dao;
 
 import bean.EmployeeBean;
-import dao.Dao;
 
-public class IndexService {
-	
-	Dao d=new Dao();
-	
+public class Dao {
+
+	/*to validate the Employee Login*/
 	public boolean checkEmpLogin(String id, String pass){
-		return d.checkEmpLogin(id,pass);
+		
 	}
 	
+	/*to validate the Admin Login*/
 	public boolean checkAdminLogin(String id, String pass){
-		return d.checkAdminLogin(id,pass);
+		
 	}
 	
+	/*to add the Employee details to the table and check whether the employee id already exists*/
 	public boolean registerEmployee(EmployeeBean e){
-		return d.registerEmployee(e);
+		
 	}
 	
+	/*fetch the row according to emp id*/
 	public EmployeeBean getEmpDetail(String id){
-		return d.getEmpDetail(id);
+		
 	}
+	
 }
