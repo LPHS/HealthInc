@@ -21,6 +21,7 @@
 <td><input type="text" name="pass" id="pass" ></td>
 </tr>
 </table>
+<input type="submit" value="Login">
 <input type="hidden" name="source" value="empLogin">
 </form>
 
