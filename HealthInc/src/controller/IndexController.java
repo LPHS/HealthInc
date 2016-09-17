@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.EmployeeBean;
 import service.IndexService;
 
 @WebServlet("/IndexController")
@@ -43,7 +44,9 @@ public class IndexController extends HttpServlet {
 				response.sendRedirect("/HealthInc/Index.jsp");
 			}
 			else if(source.equals("register")){
+				EmployeeBean e;
 				/*use request.getParameter() and set to employee bean e*/
+				
 				boolean flag=is.registerEmployee(e);
 				if(flag==true){
 					response.sendRedirect("/HealthInc/RegistrationSuccessful.jsp");
@@ -64,7 +67,7 @@ public class IndexController extends HttpServlet {
 					/*Setting session*/
 					HttpSession session=request.getSession();
 					session.setAttribute("id", id);
-					session.setAttribute("hid", e.getHid());
+					session.setAttribute("hid", e.getEmp_hi_id());
 					response.sendRedirect("/HealthInc/EmpHome.jsp");
 				}
 				else{

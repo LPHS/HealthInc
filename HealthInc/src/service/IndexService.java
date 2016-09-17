@@ -1,5 +1,7 @@
 package service;
 
+import bean.EmployeeBean;
+
 public class IndexService {
 	
 	Dao d=new Dao();
