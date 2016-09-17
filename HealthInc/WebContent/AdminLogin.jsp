@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form>
+<form action="IndexController" method="post">
 <table>
 <tr>
 <td>Id :</td>

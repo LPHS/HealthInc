@@ -10,7 +10,7 @@
 <div>
 <a href="/HealthInc/IndexController?source=registration">Click here to Register!</a>
 </div>
-<form>
+<form action="IndexController" method="post">
 <table>
 <tr>
 <td>Emp Id :</td>
