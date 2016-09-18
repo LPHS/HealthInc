@@ -212,7 +212,7 @@ public class MasterController extends HttpServlet {
 				
 				if(source.equals("domSubmit")){
 					DomiciliaryBean dom=new DomiciliaryBean();
-					dom.setEmpId(Integer.parseInt(request.getParameter("empId")));
+					dom.setEmpId(Integer.parseInt(request.getParameter("empid")));
 					dom.setBenefName(request.getParameter("benef_sel"));
 					dom.setEmpHiId(Integer.parseInt(request.getParameter("hiid")));
 					dom.setPhoneNumber(request.getParameter("mobilenum"));
@@ -232,6 +232,15 @@ public class MasterController extends HttpServlet {
 					{	
 						response.sendRedirect("/HealthInc/OperationFailed.jsp");
 					}	
+				}
+				
+				if(source.equals("hospClaim")){
+					ArrayList<DependentBean> depList=is.getDependents(Integer.parseInt(session.getAttribute("id").toString()));
+					EmployeeBean emp=is.getEmpDetail(session.getAttribute("id").toString());
+					RequestDispatcher rd=request.getRequestDispatcher("/HospitalizationClaims.jsp");
+					request.setAttribute("depList", depList);
+					request.setAttribute("emp", emp);
+					rd.forward(request, response);
 				}
 				
 				if(source.equals("hosSubmit")){

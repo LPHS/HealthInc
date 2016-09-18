@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bean.DependentBean;
+import bean.DomiciliaryBean;
 import bean.EmployeeBean;
+import bean.HospitalizationBean;
 import util.DbTransaction;
 
 public class Dao {
@@ -359,6 +361,79 @@ public class Dao {
 			s.printStackTrace();
 		}
 		DbTransaction.closeConnection(con);
+		return false;
+	}
+	
+	public boolean domClaim(DomiciliaryBean dom){
+		Connection con=null;
+		PreparedStatement st=null;
+		int a=0;
+		con=DbTransaction.getConnection();
+		try {
+			st=con.prepareStatement("insert into domclaim values(claim_id.nextval,?,?,?,?,?,?,?,?,?,?,?,?,0)");
+			st.setInt(1, dom.getEmpId());
+			st.setString(2, dom.getBenefName());
+			st.setInt(3, dom.getEmpHiId());
+			st.setString(4, dom.getPhoneNumber());
+			st.setString(5, dom.getAddress());
+			st.setString(6, dom.getAltEmailId());
+			st.setString(7, dom.getTrtStartDate());
+			st.setString(8, dom.getTrtEndDate());
+			st.setString(9, dom.getDateOfInjuiry());
+			st.setString(10, dom.getNameOfDoctor());
+			st.setString(11, dom.getDetailsOfInjuiry());
+			st.setDouble(12, dom.getTotalClaimAmt());
+			a=st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(a==1){
+			System.out.println("Domiciliary inserted");
+			return true;
+		}
+		System.out.println("Domiciliary Failed");
+		return false;
+	}
+	
+	public boolean hosClaim(HospitalizationBean hos){
+		Connection con=null;
+		PreparedStatement st=null;
+		int a=0;
+		con=DbTransaction.getConnection();
+		try {
+			st=con.prepareStatement("insert into hosclaim values(claim_id.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)");
+			st.setInt(1, hos.getEmpId());
+			st.setString(2,hos.getEmpName());
+			st.setString(3, hos.getEmail());
+			st.setString(4, hos.getMobNo());
+			st.setString(5, hos.getCompanyName());
+			st.setString(6, hos.getNameOfPatient());
+			st.setString(7, hos.getGender());
+			st.setString(8, hos.getRelationship());
+			st.setInt(9, hos.getAge());
+			st.setInt(10, hos.getHiid());
+			st.setString(11, hos.getState());
+			st.setString(12, hos.getCity());
+			st.setString(13, hos.getHosName());
+			st.setString(14, hos.getAddress());
+			st.setString(15, hos.getDateOfAdmission());
+			st.setString(16, hos.getDateOfDischarge());
+			st.setString(17, hos.getNameOfDoctor());
+			st.setString(18, hos.getDetailsOfInjury());
+			st.setString(19, hos.getReasonOfInjury());
+			st.setDouble(20, hos.getTotalClaimAmt());
+			a=st.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(a==1){
+			System.out.println("Hospitalization Inserted");
+			return true;
+		}
+		System.out.println("Hospitalization Failed");
 		return false;
 	}
 }

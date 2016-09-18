@@ -46,3 +46,83 @@ create table dependents(
 	prem_amt number(20,10)
 	
 )
+
+create table dependents(
+
+	emp_id number(10),
+	hi_id number(10),
+	name varchar(30),
+	relation varchar(20),
+	dob varchar(20),
+	gen varchar(6),
+	policy_start_date varchar(20),
+	policy_period number(5),
+	tot_sum_ins number(20,10),
+	prem_amt number(20,10)
+	
+)
+
+select * from dependents
+
+ALTER TABLE dependents
+  ADD CONSTRAINT fk_name 
+  FOREIGN KEY (emp_id) 
+  REFERENCES employee(id) 
+  ON DELETE CASCADE;
+  
+  
+create table domclaim(
+
+	domClmId number(10),
+	empId number(10),
+	benefName varchar(30),
+	empHiId number(10),
+	phoneNumber varchar(10),
+	address varchar(100),
+	altEmailId varchar(50),
+	trtStartDate varchar(20),
+	trtEndDate varchar(20),
+	dateOfInjuiry varchar(20),
+	nameOfDoctor varchar(30),
+	DetailsOfInjuiry varchar(30),
+	totalClaimAmt number(20,10)
+
+)
+
+create sequence claim_id
+start with 400000001
+increment by 1
+
+create table hosclaim(
+
+	hosClmId number(10),
+	empId number(10),
+	empName varchar(30),
+	EmailId varchar(50),
+	mobNumber varchar(10),
+	companyName varchar(20),
+	nameOfPatient varchar(30),
+	gender varchar(10),
+	relationship varchar(15),
+	age number(4),
+	HiId number(10),
+	state varchar(30),
+	city varchar(30),
+	hosName varchar(50),
+	address varchar(100),
+	dateOfAdmission varchar(20),
+	dateOfDischarge varchar(20),
+	nameOfDoctor varchar(30),
+	DetailsOfInjuiry varchar(30),
+	reasonForInjury varchar(30),
+	totalClaimAmt number(20,10)
+
+)
+
+alter table hosclaim add status number(1)
+alter table domclaim add status number(1)
+
+
+update hosclaim set status=0
+
+select * from domclaim
