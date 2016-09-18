@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Deletion Successful</title>
+<script type="text/javascript">
+	setTimeout("location.href='/HealthInc/IndexControler?source=logout'", 2000);
+</script>
 </head>
 <body>
-
+	<b>deletion successful, you will now be logged out</b>
 </body>
 </html>
