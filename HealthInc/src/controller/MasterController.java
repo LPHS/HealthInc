@@ -144,17 +144,13 @@ public class MasterController extends HttpServlet {
 					}
 				}
 
-
-				
-				
-				
-				
 				//
 				if(source.equals("empBack")){
 					response.sendRedirect("/HealthInc/EmpHome.jsp");
 				}
-			
 			}
+		}else{
+			response.sendRedirect("SessionExpired.jsp");
 		}
 		
 	}
