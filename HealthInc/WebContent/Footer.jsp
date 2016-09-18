@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Admin Home</title>
+<title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="Header.jsp"></jsp:include>
-<b>inside admin home</b>
-<jsp:include page="Footer.jsp"></jsp:include>
+<div id="footer" style="position:absolute;bottom:6px;width:97.5%;float:right;text-align:right;">
+	&copy; HealthInc &nbsp; &nbsp; &nbsp; &copy; TCS HJA18 
+</div>	
 </body>
 </html>

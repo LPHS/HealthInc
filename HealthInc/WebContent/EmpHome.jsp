@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Employee Home</title>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <b>inside emp home</b>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

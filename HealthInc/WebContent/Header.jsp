@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Admin Home</title>
+<title>Header</title>
 </head>
 <body>
-<jsp:include page="Header.jsp"></jsp:include>
-<b>inside admin home</b>
-<jsp:include page="Footer.jsp"></jsp:include>
+<div id=header>
+Welcome <%=session.getAttribute("id") %>
+<span id=logout><a href="/HealthInc/IndexController?source=logout">Logout</a></span>
+</div>
 </body>
 </html>

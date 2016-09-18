@@ -26,6 +26,9 @@ public class IndexController extends HttpServlet {
 		if(source!=null && source.equals("logout")){
 			HttpSession session=request.getSession();
 			session.invalidate();
+			RequestDispatcher rd=request.getRequestDispatcher("/Index.jsp");
+			request.setAttribute("msg", "Logged out succesfully");
+			rd.forward(request, response);
 		}
 		doPost(request,response);
 	}
