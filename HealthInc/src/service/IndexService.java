@@ -1,5 +1,6 @@
 package service;
 
+import bean.DependentBean;
 import bean.EmployeeBean;
 import dao.Dao;
 
@@ -26,5 +27,9 @@ public class IndexService {
 	public boolean updateEmployee(EmployeeBean e) {
 		return d.updateEmployee(e);
 		
+	}
+	
+	public boolean registerDependent(DependentBean d){
+		return d.registerDependent(d);
 	}
 }

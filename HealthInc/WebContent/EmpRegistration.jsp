@@ -224,6 +224,7 @@ return true;
 			<td><input type="submit" name="source" value="register"></td>
 			<td><input type="reset" value="reset"></td></tr>
 		</table>
+		<a href="/HealthInc/IndexController?source=back">Go back!</a>
 	</form>
 </body>
 </html>

@@ -76,7 +76,9 @@ public class IndexController extends HttpServlet {
 					response.sendRedirect("/HealthInc/RegistrationSuccessful.jsp");
 				}
 				else{
-					response.sendRedirect("/HealthInc/RegistrationFailed.jsp");
+					RequestDispatcher rd=request.getRequestDispatcher("/Index.jsp");
+					request.setAttribute("msg", "Registration Failed");
+					rd.forward(request, response);
 				}
 			}
 			else if(source.equals("empLogin")){				
