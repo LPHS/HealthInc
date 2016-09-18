@@ -13,6 +13,8 @@ function myFunction() {
 <title>delete</title>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
+<jsp:include page="Footer.jsp"></jsp:include>
 <h2>Delete Profile of User</h3>
 
 <h4>Details of the Employee</h4>
@@ -68,7 +70,7 @@ EmployeeBean emp=null;
 			</tr>
 			<tr>
 				<td>IFSC Code</td>
-				<td><input type="text" name="ifsc" id="ifsc" value="<%=emp.getEmp_bnk_ifsc() %>"></td>
+				<td><%=emp.getEmp_bnk_ifsc() %></td>
 			</tr>
 			<tr>
 			<td><input type="submit" name="source" value="delete" onclick="myFunction()"></td>

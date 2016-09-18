@@ -146,6 +146,8 @@ return true;
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
+<jsp:include page="Footer.jsp"></jsp:include>
 <h2>Enter Details</h2>
 	<form name="employee" action="/HealthInc/IndexController" onsubmit="return validate()"
 		method="post">
