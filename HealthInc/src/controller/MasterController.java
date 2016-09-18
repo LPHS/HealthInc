@@ -74,11 +74,6 @@ public class MasterController extends HttpServlet {
 					{
 						response.sendRedirect("/HealthInc/UpdateSuccessfull.jsp");
 					}
-				
-					else
-					{	
-						response.sendRedirect("/HealthInc/UpdateSuccessfull.jsp");
-					}
 				}
 			
 				//
@@ -122,7 +117,32 @@ public class MasterController extends HttpServlet {
 					}
 					
 				}
-			
+				
+				if(source.equals("empDelete"))
+				{
+					String id=(String)session.getAttribute("id").toString();
+					System.out.println(id);
+					EmployeeBean emp=new EmployeeBean();
+					emp=is.getEmpDetail(id);
+					System.out.println(emp.getEmp_bnk_name());
+					request.setAttribute("emp",emp);
+					RequestDispatcher rd=request.getRequestDispatcher("EmpDelete.jsp");
+					rd.forward(request,response);
+				}
+				
+				if(source.equals("delete"))
+				{	String id=(String)session.getAttribute("id").toString();
+				System.out.println(id);	
+					if(is.deleteEmployee(id))
+					{
+						response.sendRedirect("/HealthInc/DeleteSuccessfull.jsp");
+					}
+				
+					else
+					{	
+						response.sendRedirect("/HealthInc/OperationFailed.jsp");
+					}
+				}
 
 
 				

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import bean.DependentBean;
 import bean.EmployeeBean;
-
 import util.DbTransaction;
 
 public class Dao {
@@ -262,5 +261,23 @@ public class Dao {
 		DbTransaction.closeConnection(con);
 		return dblist;
 	}
-	
+
+	public boolean deleteEmployee(String id) {
+		Connection con = null;
+		PreparedStatement st=null;
+		int a;
+		con = DbTransaction.getConnection();
+		try{
+			st=con.prepareStatement("delete from employee where id=?");
+			st.setString(1, id);
+			a=st.executeUpdate();
+			if(a>0)
+				return true;
+		}catch (SQLException s) {
+			s.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return false;
+
+	}
 }

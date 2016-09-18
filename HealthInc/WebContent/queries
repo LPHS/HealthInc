@@ -34,7 +34,7 @@ insert into admin values(200000001,'admin')
 
 create table dependents(
 
-	emp_id number(10),
+	emp_id number(10) foreign key,
 	hi_id number(10),
 	name varchar(30),
 	relation varchar(20),

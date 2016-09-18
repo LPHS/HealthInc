@@ -38,4 +38,8 @@ public class IndexService {
 	public ArrayList<DependentBean> getDependents(int id) {
 		return d.getDependents(id);
 	}
+
+	public boolean deleteEmployee(String id) {
+		return d.deleteEmployee(id);
+	}
 }
