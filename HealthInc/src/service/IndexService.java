@@ -29,7 +29,7 @@ public class IndexService {
 		
 	}
 	
-	public boolean registerDependent(DependentBean d){
-		return d.registerDependent(d);
+	public boolean registerDependent(DependentBean db){
+		return d.registerDependent(db);
 	}
 }

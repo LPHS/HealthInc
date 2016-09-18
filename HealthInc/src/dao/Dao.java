@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import bean.DependentBean;
 import bean.EmployeeBean;
 
 import util.DbTransaction;
@@ -195,6 +196,36 @@ public class Dao {
 		return false;
 		
 		
+	}
+	
+	public boolean registerDependent(DependentBean d){
+		Connection con=null;
+		PreparedStatement st=null;
+		con=DbTransaction.getConnection();
+		int a=0;
+		try {
+			st=con.prepareStatement("insert into dependents values(?,hi_id.nextval,?,?,?,?,?,?,?,?)");
+			st.setInt(1,d.getDep_id());
+			st.setString(2,d.getDep_name());
+			st.setString(3, d.getDep_relation());
+			st.setString(4,d.getDep_dob());
+			st.setString(5, d.getDep_gender());
+			st.setString(6,d.getDep_policy_start_date());
+			st.setInt(7,d.getDep_policy_period());
+			st.setDouble(8,d.getDep_tot_sum_ins());
+			st.setDouble(9, d.getDep_prem_amt());
+			a=st.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(a==1){
+			System.out.println("dependent inserted");
+			return true;
+		}
+		System.out.println("dependent insertion failed");
+		return false;
 	}
 	
 }
