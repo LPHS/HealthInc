@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import bean.DependentBean;
 import bean.DomiciliaryBean;
 import bean.EmployeeBean;
+import bean.HospitalizationBean;
 import service.IndexService;
 
 
@@ -230,12 +231,41 @@ public class MasterController extends HttpServlet {
 					else
 					{	
 						response.sendRedirect("/HealthInc/OperationFailed.jsp");
+					}	
+				}
+				
+				if(source.equals("hosSubmit")){
+					HospitalizationBean hos=new HospitalizationBean();
+					hos.setEmpName(request.getParameter("emp_name"));
+			    	hos.setEmail(request.getParameter("email"));
+			    	hos.setMobNo(request.getParameter("mob_no"));
+			    	hos.setCompanyName(request.getParameter("name_company"));
+			    	hos.setNameOfPatient(request.getParameter("patient_name"));
+			    	hos.setGender(request.getParameter("gender"));
+			    	hos.setRelationship(request.getParameter("relationship"));
+			    	hos.setAge(Integer.parseInt(request.getParameter("age")));
+			    	hos.setHiid(Integer.parseInt(request.getParameter("hi_id")));
+			    	hos.setState(request.getParameter("state"));
+			    	hos.setCity(request.getParameter("city"));
+			    	hos.setHosName(request.getParameter("name_hospital"));
+			    	hos.setAddress(request.getParameter("address"));
+			    	hos.setDateOfAdmission(request.getParameter("admissiondate"));
+			    	hos.setDateOfDischarge(request.getParameter("dischargedate"));
+			    	hos.setNameOfDoctor(request.getParameter("doc_name"));
+			    	hos.setDetailsOfInjury(request.getParameter("injurydetails"));
+			    	hos.setReasonOfInjury(request.getParameter("injuryreason"));
+			    	hos.setTotalClaimAmt(Double.parseDouble(request.getParameter("total_claim")));
+					
+					if(is.hosClaim(hos))
+					{
+						response.sendRedirect("/HealthInc/ClaimRequest.jsp");
 					}
-					
-					
+					else
+					{	
+						response.sendRedirect("/HealthInc/OperationFailed.jsp");
+					}	
 				}
 
-				//
 				if(source.equals("empBack")){
 					response.sendRedirect("/HealthInc/EmpHome.jsp");
 				}

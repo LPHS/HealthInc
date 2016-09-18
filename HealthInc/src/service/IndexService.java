@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import bean.DependentBean;
 import bean.DomiciliaryBean;
 import bean.EmployeeBean;
+import bean.HospitalizationBean;
 import dao.Dao;
 
 public class IndexService {
@@ -59,7 +60,11 @@ public class IndexService {
 	}
 
 	public boolean domClaim(DomiciliaryBean dom) {
-		// TODO Auto-generated method stub
-		return false;
+		return d.domClaim(dom);
+		
+	}
+
+	public boolean hosClaim(HospitalizationBean hos) {
+		return d.hosClaim(hos);
 	}
 }
