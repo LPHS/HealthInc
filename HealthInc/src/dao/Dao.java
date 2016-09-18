@@ -20,7 +20,7 @@ public class Dao {
 		int status=0;
 		con = DbTransaction.getConnection();
 		try {
-			st = con.prepareStatement("select password from Employee where id=?");
+			st = con.prepareStatement("select password,status from Employee where id=?");
 			st.setString(1, id);
 			rs = st.executeQuery();
 				if (rs.next()) {
