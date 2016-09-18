@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -99,12 +100,34 @@ public class MasterController extends HttpServlet {
 					d.setDep_prem_amt(Double.parseDouble(request.getParameter("premium_amount")));
 					boolean flag=is.registerDependent(d);
 					if(flag==true){
-						response.sendRedirect("DependentSuccessful.jsp");
+						response.sendRedirect("/HealthInc/DependentSuccessful.jsp");
 					}
 					else{
-						response.sendRedirect("DependentFailed.jsp");
+						response.sendRedirect("/HealthInc/OpearationFailed.jsp");
 					}
 				}
+				
+				if(source.equals("viewDependents")){
+					ArrayList<DependentBean> dlist=new ArrayList<DependentBean>();
+					int id=(int)session.getAttribute("id");
+					System.out.println(id);
+					dlist=is.getDependents(id);
+					System.out.println("Dependent list fetched"+dlist.get(0).getDep_id());
+					if(dlist!=null)
+					{
+						request.setAttribute("deplist", dlist);
+						RequestDispatcher rd=request.getRequestDispatcher("ViewDependents.jsp");
+						rd.forward(request, response);
+						
+					}
+					
+				}
+			
+
+
+				
+				
+				
 				
 				//
 				if(source.equals("empBack")){

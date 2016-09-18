@@ -1,5 +1,7 @@
 package service;
 
+import java.util.ArrayList;
+
 import bean.DependentBean;
 import bean.EmployeeBean;
 import dao.Dao;
@@ -31,5 +33,9 @@ public class IndexService {
 	
 	public boolean registerDependent(DependentBean db){
 		return d.registerDependent(db);
+	}
+
+	public ArrayList<DependentBean> getDependents(int id) {
+		return d.getDependents(id);
 	}
 }

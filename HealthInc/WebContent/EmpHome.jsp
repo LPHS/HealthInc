@@ -22,8 +22,8 @@
 </tr>
 <tr>
 <td><a href="/HealthInc/MasterController?source=addDependent">Add Dependent</a></td>
-<td><a href="/HealthInc/MasterController?source=updateDependent">Update Dependent</a></td>
-<td><a href="/HealthInc/MasterController?source=deleteDependent">Delete Dependent</a></td>
+<td colspan="2"><a href="/HealthInc/MasterController?source=viewDependents">View Dependents</a></td>
+
 </tr>
 <tr >
 <td colspan="3"><h4>Claim Operations</h4></td>

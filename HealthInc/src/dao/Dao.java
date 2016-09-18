@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import bean.DependentBean;
 import bean.EmployeeBean;
@@ -226,6 +227,40 @@ public class Dao {
 		}
 		System.out.println("dependent insertion failed");
 		return false;
+	}
+
+	public ArrayList<DependentBean> getDependents(int id) {
+		Connection con = null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		EmployeeBean emp=null;
+		ArrayList<DependentBean> dblist=null;
+		con = DbTransaction.getConnection();
+		try{
+			st=con.prepareStatement("select * from Dependents where id=?");
+			st.setInt(1, id);
+			rs=st.executeQuery();
+			dblist=new ArrayList<DependentBean>();
+			while(rs.next()){
+				DependentBean db=new DependentBean();
+				db.setDep_id(rs.getInt("emp_id"));
+				db.setDep_hi_id(rs.getInt("hi_id"));
+				db.setDep_name(rs.getString("name"));
+				db.setDep_relation(rs.getString("relation"));
+				db.setDep_gender(rs.getString("gen"));
+				db.setDep_policy_start_date(rs.getString("policy_start_date"));
+				db.setDep_policy_period(rs.getInt("policy_period"));
+				db.setDep_tot_sum_ins(rs.getDouble("tot_sum_ins"));
+				db.setDep_prem_amt(rs.getDouble("prem_amt"));
+				
+				dblist.add(db);
+				return dblist;
+			}
+		}catch (SQLException s) {
+			s.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return dblist;
 	}
 	
 }
