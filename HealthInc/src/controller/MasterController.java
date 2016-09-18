@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.DependentBean;
+import bean.DomiciliaryBean;
 import bean.EmployeeBean;
 import service.IndexService;
 
@@ -197,6 +198,20 @@ public class MasterController extends HttpServlet {
 					{	
 						response.sendRedirect("/HealthInc/OperationFailed.jsp");
 					}
+				}
+				
+				if(source.equals("domClaim")){
+					ArrayList<DependentBean> depList=is.getDependents(Integer.parseInt(session.getAttribute("id").toString()));
+					EmployeeBean emp=is.getEmpDetail(session.getAttribute("id").toString());
+					RequestDispatcher rd=request.getRequestDispatcher("/DomiciliaryClaims.jsp");
+					request.setAttribute("depList", depList);
+					request.setAttribute("emp", emp);
+					rd.forward(request, response);
+				}
+				
+				if(source.equals("domSubmit")){
+					DomiciliaryBean dom=new DomiciliaryBean();
+					dom.setEmpId(Integer.parseInt(request.getParameter("empId")));
 				}
 
 				//
