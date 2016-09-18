@@ -6,11 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<script type="text/javascript">
-	setTimeout("location.href='/HealthInc/Index.jsp'", 2000);
-</script>
 <body>
-<h2>Updation Successful, Going Back!</h2>
-<a href="/HealthInc/MasterController?source=empBack">Go Back!</a>
+
 </body>
 </html>

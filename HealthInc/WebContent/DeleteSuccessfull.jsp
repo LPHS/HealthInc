@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Deletion Successful</title>
 <script type="text/javascript">
-	setTimeout("location.href='/HealthInc/IndexControler?source=logout'", 2000);
+	setTimeout("location.href='/HealthInc/IndexController?source=logout'", 2000);
 </script>
 </head>
 <body>

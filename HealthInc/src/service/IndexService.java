@@ -42,4 +42,18 @@ public class IndexService {
 	public boolean deleteEmployee(String id) {
 		return d.deleteEmployee(id);
 	}
+
+	public DependentBean getDependentDetails(int dependent) {
+		return d.getDependentDetails(dependent);
+	}
+
+	public boolean updateDependentDetails(DependentBean db) {
+		return d.updateDependentDetails(db);
+		
+	}
+
+	public boolean deleteDependent(int id) {
+		return d.deleteDependent(id);
+		
+	}
 }

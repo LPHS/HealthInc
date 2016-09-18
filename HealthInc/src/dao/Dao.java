@@ -236,7 +236,7 @@ public class Dao {
 		ArrayList<DependentBean> dblist=null;
 		con = DbTransaction.getConnection();
 		try{
-			st=con.prepareStatement("select * from Dependents where id=?");
+			st=con.prepareStatement("select * from Dependents where emp_id=?");
 			st.setInt(1, id);
 			rs=st.executeQuery();
 			dblist=new ArrayList<DependentBean>();
@@ -251,10 +251,9 @@ public class Dao {
 				db.setDep_policy_period(rs.getInt("policy_period"));
 				db.setDep_tot_sum_ins(rs.getDouble("tot_sum_ins"));
 				db.setDep_prem_amt(rs.getDouble("prem_amt"));
-				
 				dblist.add(db);
-				return dblist;
 			}
+			return dblist;
 		}catch (SQLException s) {
 			s.printStackTrace();
 		}
@@ -262,6 +261,39 @@ public class Dao {
 		return dblist;
 	}
 
+	public DependentBean getDependentDetails(int id) {
+		Connection con = null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		con = DbTransaction.getConnection();
+		DependentBean db=null;
+		try{
+			st=con.prepareStatement("select * from Dependents where hi_id=?");
+			st.setInt(1, id);
+			rs=st.executeQuery();
+			db=new DependentBean();
+			while(rs.next()){
+				db.setDep_hi_id(rs.getInt("hi_id"));
+				db.setDep_id(rs.getInt("emp_id"));
+				db.setDep_name(rs.getString("name"));
+				db.setDep_relation(rs.getString("relation"));
+				db.setDep_dob(rs.getString("dob"));
+				db.setDep_gender(rs.getString("gen"));
+				db.setDep_policy_start_date(rs.getString("policy_start_date"));
+				db.setDep_policy_period(rs.getInt("policy_period"));
+				db.setDep_tot_sum_ins(rs.getDouble("tot_sum_ins"));
+				db.setDep_prem_amt(rs.getDouble("prem_amt"));
+
+			}
+			return db;
+		}catch (SQLException s) {
+			s.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return db;
+	}
+
+	
 	public boolean deleteEmployee(String id) {
 		Connection con = null;
 		PreparedStatement st=null;
@@ -279,5 +311,54 @@ public class Dao {
 		DbTransaction.closeConnection(con);
 		return false;
 
+	}
+
+	public boolean updateDependentDetails(DependentBean d) {
+		Connection con = null;
+		PreparedStatement st=null;
+		con = DbTransaction.getConnection();
+		try {
+			st = con.prepareStatement("Update dependents Set name=?, relation=?, dob=?, gen=?, policy_start_date=?, policy_period=?, tot_sum_ins=?,prem_amt=? where hi_id=?");
+			st.setString(1, d.getDep_name());
+			st.setString(2, d.getDep_relation());
+			st.setString(3, d.getDep_dob());
+			st.setString(4, d.getDep_gender());
+			st.setString(5, d.getDep_policy_start_date());
+			st.setInt(6, d.getDep_policy_period());
+			st.setDouble(7, d.getDep_tot_sum_ins());
+			st.setDouble(8, d.getDep_prem_amt());
+			st.setInt(9,d.getDep_hi_id());
+
+			int flag=st.executeUpdate();
+			if(flag==1)
+			{	System.out.println("Updated Successfully, 1");
+				return true;
+			}
+			System.out.println("could not Update, not 1");
+			return false;
+		
+		} catch (SQLException s) {
+			s.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return false;
+	}
+
+	public boolean deleteDependent(int id) {
+		Connection con = null;
+		PreparedStatement st=null;
+		int a;
+		con = DbTransaction.getConnection();
+		try{
+			st=con.prepareStatement("delete from dependents where hi_id=?");
+			st.setInt(1, id);
+			a=st.executeUpdate();
+			if(a>0)
+				return true;
+		}catch (SQLException s) {
+			s.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return false;
 	}
 }

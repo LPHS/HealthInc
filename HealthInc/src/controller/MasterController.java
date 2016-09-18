@@ -31,7 +31,7 @@ public class MasterController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		IndexService is=new IndexService();
-		HttpSession session=request.getSession(false);
+		HttpSession session=request.getSession();
 		String source=request.getParameter("source");
 		if(session!=null){
 			if(source!=null)
@@ -72,7 +72,7 @@ public class MasterController extends HttpServlet {
 				
 					if(is.updateEmployee(e))
 					{
-						response.sendRedirect("/HealthInc/UpdateSuccessfull.jsp");
+						response.sendRedirect("/HealthInc/UpdateSuccessful.jsp");
 					}
 				}
 			
@@ -104,8 +104,9 @@ public class MasterController extends HttpServlet {
 				
 				if(source.equals("viewDependents")){
 					ArrayList<DependentBean> dlist=new ArrayList<DependentBean>();
-					int id=(int)session.getAttribute("id");
-					System.out.println(id);
+					String ids=(String)session.getAttribute("id").toString();
+					System.out.println(ids);
+					int id=Integer.parseInt(ids);
 					dlist=is.getDependents(id);
 					System.out.println("Dependent list fetched"+dlist.get(0).getDep_id());
 					if(dlist!=null)
@@ -114,6 +115,60 @@ public class MasterController extends HttpServlet {
 						RequestDispatcher rd=request.getRequestDispatcher("ViewDependents.jsp");
 						rd.forward(request, response);
 						
+					}
+					
+				}
+				
+				if(source.equals("Update Dependent"))
+				{
+					int dependent=Integer.parseInt(request.getParameter("d_id"));
+					DependentBean dep=new DependentBean();
+					dep=is.getDependentDetails(dependent);
+					request.setAttribute("Dependent", dep);
+					RequestDispatcher rd=request.getRequestDispatcher("EmpUpdateDependent.jsp");
+					rd.forward(request, response);
+				}
+				
+				if(source.equals("Update Dependent Details"))
+				{
+					DependentBean d=new DependentBean();
+				//request.getParameter("d_id");
+					d.setDep_hi_id(Integer.parseInt(request.getParameter("hi_id")));
+					d.setDep_id(Integer.parseInt(session.getAttribute("id").toString()));
+					d.setDep_name(request.getParameter("ben_name"));
+					d.setDep_relation(request.getParameter("relation"));
+					d.setDep_gender(request.getParameter("gender"));
+					d.setDep_dob(request.getParameter("dob"));
+					d.setDep_policy_start_date(request.getParameter("policy_startdate"));
+					d.setDep_policy_period(Integer.parseInt(request.getParameter("policy_period")));
+					d.setDep_tot_sum_ins(Double.parseDouble(request.getParameter("total_sum")));
+					d.setDep_prem_amt(Double.parseDouble(request.getParameter("premium_amount")));
+					
+					if(is.updateDependentDetails(d))
+					{
+						response.sendRedirect("/HealthInc/UpdateSuccessful.jsp");
+					}
+					
+					else
+					{
+						response.sendRedirect("/HealthInc/OperationFailed.jsp");
+					}
+					
+				}
+				
+				
+				if(source.equals("Delete Dependent"))
+				{
+				//request.getParameter("d_id");
+					int id=Integer.parseInt(request.getParameter("d_id"));
+					if(is.deleteDependent(id))
+					{
+						response.sendRedirect("/HealthInc/DeleteSuccessfull.jsp");
+					}
+					
+					else
+					{
+						response.sendRedirect("/HealthInc/OperationFailed.jsp");
 					}
 					
 				}

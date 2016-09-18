@@ -1,8 +1,14 @@
+<%@page import="bean.DependentBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%Object o=request.getAttribute("Dependent");
+DependentBean dep=null;
+	if(o!=null){
+		dep=(DependentBean)o;
+	} %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Dependent Registration</title>
 <script type="text/javascript">
@@ -45,16 +51,21 @@ function validate(){
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
 <form name="dependents" action="/HealthInc/MasterController" onsubmit="return validate()" method="post">
-<h2>Enter Details</h2>
+<h2>Update Dependent Details</h2>
 <table>
 <tr>
 <td>Employee Id:</td>
-<td><%=session.getAttribute("id") %></td>
+<td><input type="text" name="emp_id" value="<%=dep.getDep_id()%>" readonly></td>
+</tr>
+
+<tr>
+<td>Dependent H Id:</td>
+<td><input type="text" name="hi_id" value="<%=dep.getDep_hi_id()%>" readonly></td>
 </tr>
 
 <tr>
 <td>Beneficiary Name:</td>
-<td><input type="text" id="ben_name" name="ben_name"></td>
+<td><input type="text" id="ben_name" name="ben_name" value="<%=dep.getDep_name() %>"></td>
 </tr>
 
 <tr>
@@ -73,7 +84,7 @@ function validate(){
 
 <tr>
 <td>Date Of Birth:</td>
-<td><input type="text" id="dob" name="dob"></td>
+<td><input type="text" id="dob" name="dob"  value="<%=dep.getDep_dob() %>"></td>
 </tr>
 
 <tr>
@@ -86,17 +97,17 @@ function validate(){
 
 <tr>
 <td>Policy start date:</td>
-<td><input type="text" id="policy_startdate" name="policy_startdate"></td>
+<td><input type="text" id="policy_startdate" name="policy_startdate"  value="<%=dep.getDep_policy_start_date() %>"></td>
 </tr>
 
 <tr>
 <td>Policy Period:</td>
-<td><input type="text" id="policy_period" name="policy_period"></td>
+<td><input type="text" id="policy_period" name="policy_period"  value="<%=dep.getDep_policy_period() %>"></td>
 </tr>
 
 <tr>
 <td>Total Sum Insured:</td>
-<td><input type="text" id="total_sum" name="total_sum" onkeyup="calculateTotal()"></td>
+<td><input type="text" id="total_sum" name="total_sum" onkeyup="calculateTotal()"  value="<%=dep.getDep_tot_sum_ins() %>"></td>
 </tr>
 
 <tr>
@@ -104,7 +115,7 @@ function validate(){
 <td><input type="text" id="premium_account" name="premium_amount" readonly="readonly"></td>
 </tr>
 <tr>
-<td><input type="submit" name="source" value="register"></td>
+<td><input type="submit" name="source" value="Update Dependent Details"></td>
 <td><input type="reset" value="reset"></td></tr>
 </table>
 </form>

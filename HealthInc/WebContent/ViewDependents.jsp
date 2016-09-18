@@ -13,22 +13,28 @@ ArrayList<DependentBean> dblist=null;
 	} %>
 
 <body>
-<form>
+<form action="/HealthInc/MasterController" method="post">
 <table>
+<tr>
+<td></td>
+<td>Dependency Name</td>
+<td>Relation</td>
+</tr>
 <%
 	for(DependentBean db:dblist)
 	{
 		%>
 		<tr>
-		<td><input type="radio" value="<%=db.getDep_hi_id()%>" name="dependent"></td>
+		<td><input type="radio" value="<%=db.getDep_hi_id()%>" name="d_id" id="d_id"></td>
 		<td><%=db.getDep_name() %></td>
 		<td><%=db.getDep_relation() %></td>
 		</tr>
 		<%
 	}
 %>
-
 </table>
+<input type="submit" name="source" value="Update Dependent">
+<input type="submit" name="source" value="Delete Dependent">
 </form>
 </body>
 </html>
