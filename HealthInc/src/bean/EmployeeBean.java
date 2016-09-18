@@ -20,6 +20,7 @@ public class EmployeeBean {
 		private String emp_bnk_name;
 		private String emp_bnk_ifsc;
 		private String emp_password ;
+		private int emp_status;
 
 		public EmployeeBean(int emp_hi_id, int emp_id, String emp_name, String emp_dob,
 				String emp_gen, String emp_email, String emp_alt_email,
@@ -150,5 +151,11 @@ public class EmployeeBean {
 		}
 		public void setEmp_password(String emp_password) {
 			this.emp_password = emp_password;
+		}
+		public int getEmp_status() {
+			return emp_status;
+		}
+		public void setEmp_status(int emp_status) {
+			this.emp_status = emp_status;
 		}	
 }

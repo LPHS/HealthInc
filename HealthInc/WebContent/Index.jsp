@@ -10,7 +10,7 @@
 <div>
 <a href="/HealthInc/IndexController?source=registration">Click here to Register!</a>
 </div>
-<form action="IndexController" method="post">
+<form action="/HealthInc/IndexController" method="post">
 <table>
 <tr>
 <td>Emp Id :</td>
@@ -18,12 +18,19 @@
 </tr>
 <tr>
 <td>Password:</td>
-<td><input type="text" name="pass" id="pass" ></td>
+<td><input type="password" name="pass" id="pass" ></td>
 </tr>
 </table>
 <input type="submit" value="Login">
 <input type="hidden" name="source" value="empLogin">
 </form>
+
+<div>
+<%Object msg=request.getAttribute("msg");
+	if(msg!=null){%>
+	<%=msg %>
+	<%} %>
+</div>
 
 <div>
 <a href="/HealthInc/IndexController?source=adminLoginRedirect">Admin Login!</a>

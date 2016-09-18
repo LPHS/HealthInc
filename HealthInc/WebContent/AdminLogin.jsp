@@ -16,12 +16,18 @@
 </tr>
 <tr>
 <td>Password:</td>
-<td><input type="text" name="pass" id="pass" ></td>
+<td><input type="password" name="pass" id="pass" ></td>
 </tr>
 </table>
 <input type="submit" value="Login">
 <input type="hidden" name="source" value="adminLogin">
 </form>
+<div>
+<%Object msg=request.getAttribute("msg");
+	if(msg!=null){%>
+	<%=msg %>
+	<%} %>
+</div>
 <a href="/HealthInc/IndexController?source=back">Go back!</a>
 </body>
 </html>

@@ -76,7 +76,7 @@ public class IndexController extends HttpServlet {
 					response.sendRedirect("/HealthInc/RegistrationFailed.jsp");
 				}
 			}
-			else if(source.equals("empLogin")){
+			else if(source.equals("empLogin")){				
 				String id=request.getParameter("id");
 				String pass=request.getParameter("pass");
 				
@@ -92,7 +92,9 @@ public class IndexController extends HttpServlet {
 					response.sendRedirect("/HealthInc/EmpHome.jsp");
 				}
 				else{
-					response.sendRedirect("/HealthInc/Index.jsp");
+					RequestDispatcher rd=request.getRequestDispatcher("/Index.jsp");
+					request.setAttribute("msg", "Login Failed");
+					rd.forward(request, response);
 				}
 			}
 			else if(source.equals("adminLogin")){
@@ -111,7 +113,9 @@ public class IndexController extends HttpServlet {
 					response.sendRedirect("/HealthInc/AdminHome.jsp");
 				}
 				else{
-					response.sendRedirect("/HealthInc/Index.jsp");
+					RequestDispatcher rd=request.getRequestDispatcher("/AdminLogin.jsp");
+					request.setAttribute("msg", "Login Failed");
+					rd.forward(request, response);
 				}
 				
 			}
