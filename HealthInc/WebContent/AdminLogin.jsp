@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="IndexController" method="post">
+<form action="/HealthInc/IndexController" method="post">
 <table>
 <tr>
 <td>Id :</td>

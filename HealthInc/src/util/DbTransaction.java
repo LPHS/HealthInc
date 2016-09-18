@@ -11,7 +11,7 @@ public class DbTransaction
 	private static String user="system";
 	private static String password="pratyush";
 
-	public Connection getConnection() 
+	public static Connection getConnection() 
 	{
 		try 
 		{

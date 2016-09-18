@@ -1,0 +1,34 @@
+create table Employee(
+id varchar(10) primary key,
+hi_id number(10) unique,
+name varchar(30),
+dob varchar(20),
+gen varchar(6),
+email varchar(30),
+alt_mail varchar(30),
+ph_no number(12),
+mob_no number(12),
+policy_start_date date,
+policy_period number(5),
+tot_sum_ins number(20,10),
+prem_amt number(20,10),
+acc_no number(12),
+bnk_name varchar(100),
+ifsc varchar(10),
+password varchar(20),
+status number(1)
+)
+
+create table Admin(
+id varchar2(10),
+password varchar2(20)
+)
+
+create sequence hi_id
+start with 100000001
+increment by 1
+
+
+insert into admin values(2000000001,'admin')
+
+

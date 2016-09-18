@@ -26,7 +26,7 @@
 </form>
 
 <div>
-<a href="/HealthInc/IndexController?source=adminLogin">Admin Login!</a>
+<a href="/HealthInc/IndexController?source=adminLoginRedirect">Admin Login!</a>
 </div>
 
 

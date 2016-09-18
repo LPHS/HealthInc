@@ -37,7 +37,8 @@ public class IndexController extends HttpServlet {
 			if(source.equals("registration")){
 				response.sendRedirect("/HealthInc/EmpRegistration.jsp");
 			}
-			else if(source.equals("adminLogin")){
+			else if(source.equals("adminLoginRedirect")){
+				System.out.println("admin login redirect in controller");
 				response.sendRedirect("/HealthInc/AdminLogin.jsp");
 			}
 			else if(source.equals("back")){
@@ -95,6 +96,7 @@ public class IndexController extends HttpServlet {
 				}
 			}
 			else if(source.equals("adminLogin")){
+				System.out.println("In admin login controller");
 				String id=request.getParameter("id");
 				String pass=request.getParameter("pass");
 				
