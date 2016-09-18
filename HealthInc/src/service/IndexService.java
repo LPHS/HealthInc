@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 
 import bean.DependentBean;
+import bean.DomiciliaryBean;
 import bean.EmployeeBean;
 import dao.Dao;
 
@@ -55,5 +56,10 @@ public class IndexService {
 	public boolean deleteDependent(int id) {
 		return d.deleteDependent(id);
 		
+	}
+
+	public boolean domClaim(DomiciliaryBean dom) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

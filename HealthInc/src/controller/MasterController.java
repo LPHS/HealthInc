@@ -212,6 +212,27 @@ public class MasterController extends HttpServlet {
 				if(source.equals("domSubmit")){
 					DomiciliaryBean dom=new DomiciliaryBean();
 					dom.setEmpId(Integer.parseInt(request.getParameter("empId")));
+					dom.setBenefName(request.getParameter("benef_sel"));
+					dom.setEmpHiId(Integer.parseInt(request.getParameter("hiid")));
+					dom.setPhoneNumber(request.getParameter("mobilenum"));
+					dom.setAddress(request.getParameter("address"));
+					dom.setAltEmailId(request.getParameter("altemailid"));
+					dom.setTrtStartDate(request.getParameter("trtstartdate"));
+					dom.setTrtEndDate(request.getParameter("trtenddate"));
+					dom.setDateOfInjuiry(request.getParameter("doi"));
+					dom.setNameOfDoctor(request.getParameter("docname"));
+					dom.setDetailsOfInjuiry(request.getParameter("injurytype"));
+					dom.setTotalClaimAmt(Double.parseDouble(request.getParameter("totalclaimamt")));
+					if(is.domClaim(dom))
+					{
+						response.sendRedirect("/HealthInc/ClaimRequest.jsp");
+					}
+					else
+					{	
+						response.sendRedirect("/HealthInc/OperationFailed.jsp");
+					}
+					
+					
 				}
 
 				//
