@@ -8,7 +8,32 @@
 </head>
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
-<b>inside emp home</b>
 <jsp:include page="Footer.jsp"></jsp:include>
+<table>
+<tr >
+<td colspan="3"><h4>Profile Operations</h4></td>
+</tr>
+<tr>
+<td><a href="/HealthInc/MasterController?source=empUpdate">Update Profile</a></td>
+<td><a href="/HealthInc/MasterController?source=empDelete">Delete Profile</a></td>
+</tr>
+<tr >
+<td colspan="3"><h4>Dependent Operations</h4></td>
+</tr>
+<tr>
+<td><a href="/HealthInc/MasterController?source=addDependent">Add Dependent</a></td>
+<td><a href="/HealthInc/MasterController?source=updateDependent">Update Dependent</a></td>
+<td><a href="/HealthInc/MasterController?source=deleteDependent">Delete Dependent</a></td>
+</tr>
+<tr >
+<td colspan="3"><h4>Claim Operations</h4></td>
+</tr>
+<tr>
+<td><a href="/HealthInc/MasterController?source=domClaim">Domiciliary Claim</a></td>
+<td><a href="/HealthInc/MasterController?source=hospClaim">Hospitalization Claim</a></td>
+<td><a href="/HealthInc/MasterController?source=searchClaim">Seacrh Claim</a></td>
+</tr>
+
+</table>
 </body>
 </html>
