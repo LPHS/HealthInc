@@ -147,7 +147,7 @@ return true;
 </head>
 <body>
 <h2>Enter Details</h2>
-	<form name="employee" action="" onsubmit="return validate()"
+	<form name="employee" action="/HealthInc/IndexController" onsubmit="return validate()"
 		method="post">
 		<table>
 			<tr>
@@ -160,11 +160,11 @@ return true;
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><input type="password" name="pwd" id="pwd"></td>
+				<td><input type="password" name="pwd" id="pwd" ></td>
 			</tr>
 			<tr>
 				<td>Date Of Birth</td>
-				<td><input type="date" name="dob" id="dob"></td>
+				<td><input type="date" name="dob" id="dob" ></td>
 			</tr>
 			<tr>
 				<td>Gender</td>
@@ -174,7 +174,7 @@ return true;
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td><input type="text" name="mailId" id="mailId"></td>
+				<td><input type="text" name="mailId" id="mailId" ></td>
 			</tr>
 			<tr>
 				<td>Alternate Email</td>
@@ -187,7 +187,7 @@ return true;
 			<tr>
 				<td>Alternate Mobile No.</td>
 				<td><input type="text" name="altMobNo" id="altMobNo"
-					maxlength="10"></td>
+					maxlength="10" ></td>
 			</tr>
 			<tr>
 				<td>Policy Start Date</td>
@@ -195,7 +195,7 @@ return true;
 			</tr>
 			<tr>
 				<td>Policy Period (in years)</td>
-				<td><input type="text" name="polPeriod" id="polPeriod"></td>
+				<td><input type="text" name="polPeriod" id="polPeriod" ></td>
 			</tr>
 
 			<tr>
@@ -208,12 +208,12 @@ return true;
 
 			<tr>
 				<td>Bank Account No.</td>
-				<td><input type="text" name="bankAccNo" id="bankAccNo">
+				<td><input type="text" name="bankAccNo" id="bankAccNo" >
 				</td>
 			</tr>
 			<tr>
 				<td>Name of the Bank</td>
-				<td><input type="text" name="bankName" id="bankName">
+				<td><input type="text" name="bankName" id="bankName" >
 				</td>
 			</tr>
 			<tr>
