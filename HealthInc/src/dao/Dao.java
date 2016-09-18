@@ -117,6 +117,7 @@ public class Dao {
 		
 	}
 	
+	
 	/*fetch the row according to emp id*/
 	public EmployeeBean getEmpDetail(String id){
 		Connection con = null;
@@ -155,6 +156,45 @@ public class Dao {
 		}
 		DbTransaction.closeConnection(con);
 		return emp;
+	}
+	
+	public boolean updateEmployee(EmployeeBean e){
+		Connection con = null;
+		PreparedStatement st=null;
+		con = DbTransaction.getConnection();
+		try {
+			st = con.prepareStatement("insert into Employee values(?,hi_id.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)");
+			st.setInt(1,e.getEmp_id());
+			st.setString(2, e.getEmp_name());
+			st.setString(3, e.getEmp_dob());
+			st.setString(4, e.getEmp_gen());
+			st.setString(5,e.getEmp_email());
+			st.setString(6, e.getEmp_alt_email());
+			st.setString(7, e.getEmp_ph_no());
+			st.setString(8,e.getEmp_mob_no());
+			st.setString(9, e.getEmp_policy_start_date());
+			st.setInt(10, e.getEmp_policy_period());
+			st.setDouble(11,e.getEmp_tot_sum_ins());
+			st.setDouble(12, e.getEmp_prem_amt());
+			st.setString(13,e.getEmp_acc_no());
+			st.setString(14, e.getEmp_bnk_name());
+			st.setString(15, e.getEmp_bnk_ifsc());
+			st.setString(16, e.getEmp_password());
+			int flag=st.executeUpdate();
+			if(flag==1)
+			{	System.out.println("Inserted Successfully, 1");
+				return true;
+			}
+			System.out.println("could'nt be inserted, not 1");
+			return false;
+		
+		} catch (SQLException s) {
+			s.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return false;
+		
+		
 	}
 	
 }

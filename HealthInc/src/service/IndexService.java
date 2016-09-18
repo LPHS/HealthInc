@@ -22,4 +22,9 @@ public class IndexService {
 	public EmployeeBean getEmpDetail(String id){
 		return d.getEmpDetail(id);
 	}
+
+	public boolean updateEmployee(EmployeeBean e) {
+		return d.updateEmployee(e);
+		
+	}
 }
