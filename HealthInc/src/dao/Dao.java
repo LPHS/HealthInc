@@ -83,25 +83,22 @@ public class Dao {
 		PreparedStatement st=null;
 		con = DbTransaction.getConnection();
 		try {
-			st = con.prepareStatement("insert into Employee values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			st = con.prepareStatement("insert into Employee values(?,hi_id.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			st.setInt(1,e.getEmp_id());
-			st.setInt(2, e.getEmp_hi_id());
-			st.setString(3, e.getEmp_name());
-			st.setString(4, e.getEmp_dob());
-			st.setString(5, e.getEmp_gen());
-			st.setString(6,e.getEmp_email());
-			st.setString(7, e.getEmp_alt_email());
-			st.setString(8, e.getEmp_ph_no());
-			st.setString(9,e.getEmp_mob_no());
-			st.setString(10, e.getEmp_policy_start_date());
-			st.setInt(11, e.getEmp_policy_period());
-			st.setDouble(12, e.getEmp_prem_amt());
-			st.setDouble(13,e.getEmp_prem_amt());
+			st.setString(2, e.getEmp_name());
+			st.setString(3, e.getEmp_dob());
+			st.setString(4, e.getEmp_gen());
+			st.setString(5,e.getEmp_email());
+			st.setString(6, e.getEmp_alt_email());
+			st.setString(7, e.getEmp_ph_no());
+			st.setString(10,e.getEmp_mob_no());
+			st.setString(11, e.getEmp_policy_start_date());
+			st.setInt(12, e.getEmp_policy_period());
+			st.setDouble(13, e.getEmp_prem_amt());
 			st.setString(14,e.getEmp_acc_no());
 			st.setString(15, e.getEmp_bnk_name());
 			st.setString(16, e.getEmp_bnk_ifsc());
 			st.setString(17, e.getEmp_password());
-			st.setInt(18, 0);
 			int flag=st.executeUpdate();
 			if(flag==1)
 			{	System.out.println("Inserted Successfully, 1");
