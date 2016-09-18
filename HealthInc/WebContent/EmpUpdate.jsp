@@ -20,7 +20,7 @@ EmployeeBean emp=null;
 					document.getElementById('pamt').value = premAmt;
 				}
 			</script>
-<form action="/HealthInc/MasterController" method="post">
+<form action="/HealthInc/MasterController" method="post" name="employee">
 		<table>
 			<tr>
 				<td>Employee Name</td>
@@ -28,7 +28,7 @@ EmployeeBean emp=null;
 			</tr>
 			<tr>
 				<td>Employee Id</td>
-				<td><input type="text" name="empId" id="empId" value="<%=emp.getEmp_id() %>"></td>
+				<td><input type="text" name="empId" id="empId" value="<%=emp.getEmp_id() %>" readonly></td>
 			</tr>
 			<tr>
 				<td>Password</td>
