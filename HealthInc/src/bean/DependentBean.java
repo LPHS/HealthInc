@@ -13,7 +13,16 @@ public class DependentBean {
 	private int dep_policy_period;
 	private double dep_tot_sum_ins;
 	private double dep_prem_amt;
+	private int status;
 	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public DependentBean() {
 		super();
 	}

@@ -51,6 +51,10 @@ function validate(){
 		return false;
 	}
 }
+
+function populate(hiid){
+	document.getElementById("hiid").value=hiid;
+}
 </script>
 </head>
 <body>
@@ -74,7 +78,7 @@ function validate(){
 						<%
 							for (DependentBean d : depList) {
 						%>
-						<option value="<%=d.getDep_name()%>"><%=d.getDep_name()%></option>
+						<option value="<%=d.getDep_name()%>" onclick="populate(<%=d.getDep_hi_id()%>)"><%=d.getDep_name()%></option>
 
 						<%
 							}
@@ -84,7 +88,7 @@ function validate(){
 
 			<tr>
 				<td>HealthInsurance ID:</td>
-				<td><input type="text" name="hiid" id="hiid" value="<%=session.getAttribute("hid") %>" readOnly></td>
+				<td><input type="text" name="hiid" id="hiid" readOnly></td>
 			</tr>
 
 			<%

@@ -22,6 +22,24 @@ public class HospitalizationBean {
 	private String detailsOfInjury;
 	private String reasonOfInjury;
 	private double totalClaimAmt;
+	private int status;
+	private double approvedAmt;
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public double getApprovedAmt() {
+		return approvedAmt;
+	}
+
+	public void setApprovedAmt(double approvedAmt) {
+		this.approvedAmt = approvedAmt;
+	}
 
 	public int getHosClaimId() {
 		return hosClaimId;

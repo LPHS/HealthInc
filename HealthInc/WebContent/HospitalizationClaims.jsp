@@ -9,20 +9,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>HospitalizationClaims</title>
 <script>
-	var rel = document.getElementById("relationship").value;
-	var letters = /^[A-Za-z\s]+$/;
+function populate(hiid,gender,relation){
 
-	if (rel == "" || rel == null) {
-		alert('Please enter relationship');
-		return false;
-	}
-	if (!rel.match(letters)) {
-		alert('Relationship contain only letters');
-		return false;
-	}
+	document.getElementById("gender").value=gender;
+	document.getElementById("relationship").value=relation;
+	document.getElementById("hi_id").value=hiid;
+	
+}
 </script>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 	<form action="/HealthInc/MasterController" method=post
 		onsubmit="return validate()">
 		<table>
@@ -69,7 +66,7 @@
 						<%
 							for (DependentBean d : depList) {
 						%>
-						<option value="<%=d.getDep_name()%>"><%=d.getDep_name()%></option>
+						<option value="<%=d.getDep_name()%>" onclick="populate(<%=d.getDep_hi_id()%>,'<%=d.getDep_gender()%>','<%=d.getDep_relation()%>')"><%=d.getDep_name()%></option>
 
 						<%
 							}
@@ -81,14 +78,12 @@
 
 			<tr>
 				<td>Gender:</td>
-				<td><input type="radio" id="gender" name="gender" value="male"
-					checked="checked">Male <input type="radio" id="gender"
-					name="gender" value="female">Female</td>
+				<td><input type="text" name="gender" id="gender" readonly></td>
 			</tr>
 
 			<tr>
 				<td>Relationship:</td>
-				<td><input type="text" name="relationship" id="relationship"></td>
+				<td><input type="text" name="relationship" id="relationship" readonly></td>
 			</tr>
 
 			<tr>
@@ -98,7 +93,7 @@
 
 			<tr>
 				<td>Health Insurance Id(HI-ID):</td>
-				<td><input type="text" name="hi_id" id="hi_id"></td>
+				<td><input type="text" name="hi_id" id="hi_id" readonly></td>
 			</tr>
 
 			<tr>
@@ -161,5 +156,6 @@
 		</table>
 		<a href="/HealthInc/MasterController?source=empBack">Go back!</a>
 	</form>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import bean.ClaimBean;
 import bean.DependentBean;
 import bean.DomiciliaryBean;
 import bean.EmployeeBean;
@@ -206,7 +207,7 @@ public class Dao {
 		con=DbTransaction.getConnection();
 		int a=0;
 		try {
-			st=con.prepareStatement("insert into dependents values(?,hi_id.nextval,?,?,?,?,?,?,?,?)");
+			st=con.prepareStatement("insert into dependents values(?,hi_id.nextval,?,?,?,?,?,?,?,?,0)");
 			st.setInt(1,d.getDep_id());
 			st.setString(2,d.getDep_name());
 			st.setString(3, d.getDep_relation());
@@ -253,6 +254,7 @@ public class Dao {
 				db.setDep_policy_period(rs.getInt("policy_period"));
 				db.setDep_tot_sum_ins(rs.getDouble("tot_sum_ins"));
 				db.setDep_prem_amt(rs.getDouble("prem_amt"));
+				db.setStatus(rs.getInt("status"));
 				dblist.add(db);
 			}
 			return dblist;
@@ -285,6 +287,7 @@ public class Dao {
 				db.setDep_policy_period(rs.getInt("policy_period"));
 				db.setDep_tot_sum_ins(rs.getDouble("tot_sum_ins"));
 				db.setDep_prem_amt(rs.getDouble("prem_amt"));
+				db.setStatus(rs.getInt("status"));
 
 			}
 			return db;
@@ -370,7 +373,7 @@ public class Dao {
 		int a=0;
 		con=DbTransaction.getConnection();
 		try {
-			st=con.prepareStatement("insert into domclaim values(claim_id.nextval,?,?,?,?,?,?,?,?,?,?,?,?,0)");
+			st=con.prepareStatement("insert into domclaim values(claim_id.nextval,?,?,?,?,?,?,?,?,?,?,?,?,0,0)");
 			st.setInt(1, dom.getEmpId());
 			st.setString(2, dom.getBenefName());
 			st.setInt(3, dom.getEmpHiId());
@@ -388,6 +391,7 @@ public class Dao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		DbTransaction.closeConnection(con);
 		if(a==1){
 			System.out.println("Domiciliary inserted");
 			return true;
@@ -402,7 +406,7 @@ public class Dao {
 		int a=0;
 		con=DbTransaction.getConnection();
 		try {
-			st=con.prepareStatement("insert into hosclaim values(claim_id.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)");
+			st=con.prepareStatement("insert into hosclaim values(claim_id.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,0)");
 			st.setInt(1, hos.getEmpId());
 			st.setString(2,hos.getEmpName());
 			st.setString(3, hos.getEmail());
@@ -429,11 +433,81 @@ public class Dao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		DbTransaction.closeConnection(con);
 		if(a==1){
 			System.out.println("Hospitalization Inserted");
 			return true;
 		}
 		System.out.println("Hospitalization Failed");
 		return false;
+	}
+	
+	public ArrayList<ClaimBean> claimSearch(int hid){
+		Connection con = null;
+		PreparedStatement st=null;
+		int a=0;
+		con=DbTransaction.getConnection();
+		ResultSet rs=null;
+		ClaimBean cb=null;
+		ArrayList<ClaimBean> cbList=new ArrayList<ClaimBean>();
+		try {		
+			
+			//first searching from domiciliary claim tables
+			st=con.prepareStatement("select * from domclaim where empHiId=?");
+			st.setInt(1, hid);
+			rs=st.executeQuery();
+			while(rs.next()){
+				cb=new ClaimBean();
+				cb.setClaimType("Domiciliary");
+				cb.setMediAssistClaimNo(rs.getInt("domClmId"));
+				cb.setRelation(getRelationDep(hid,con));
+				cb.setClaimAmt(rs.getDouble("totalClaimAmt"));
+				cb.setApprovedAmt(rs.getDouble("approvedAmt"));
+				cb.setStatus(rs.getInt("status"));
+				cbList.add(cb);
+			}
+			
+			//searching from hospitalization claim tables
+			st=con.prepareStatement("select * from hosclaim where HiId=?");
+			st.setInt(1, hid);
+			rs=st.executeQuery();
+			while(rs.next()){
+				cb=new ClaimBean();
+				cb.setClaimType("Hospitalization");
+				cb.setMediAssistClaimNo(rs.getInt("hosClmId"));
+				cb.setRelation(rs.getString("relationship"));
+				cb.setClaimAmt(rs.getDouble("totalClaimAmt"));
+				cb.setApprovedAmt(rs.getDouble("approvedAmt"));
+				cb.setStatus(rs.getInt("status"));
+				cbList.add(cb);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return cbList;
+	}
+	
+	
+	//to get relation of the dependent for domclaim table
+	public String getRelationDep(int hid,Connection con){
+		PreparedStatement st=null;
+		int a=0;
+		ResultSet rs=null;
+		String relation=null;
+		try {
+			st=con.prepareStatement("select relation from dependents where hi_id=?");
+			st.setInt(1, hid);
+			rs=st.executeQuery();
+			while(rs.next()){
+				relation=rs.getString(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return relation;
 	}
 }

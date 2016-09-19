@@ -2,6 +2,7 @@ package service;
 
 import java.util.ArrayList;
 
+import bean.ClaimBean;
 import bean.DependentBean;
 import bean.DomiciliaryBean;
 import bean.EmployeeBean;
@@ -75,5 +76,9 @@ public class IndexService {
 
 	public Hospital getHospital(int hid) {
 		return d.getHospital(hid);
+	}
+	
+	public ArrayList<ClaimBean> claimSearch(int hid){
+		return d.claimSearch(hid);
 	}
 }

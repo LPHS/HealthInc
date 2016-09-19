@@ -13,7 +13,30 @@ public class DomiciliaryBean {
 	private String dateOfInjuiry;
 	private String nameOfDoctor;
 	private String DetailsOfInjuiry;
-	private Double totalClaimAmt;
+	private double totalClaimAmt;
+	private double approvedAmt;
+	private int status;
+	
+	
+	public double getApprovedAmt() {
+		return approvedAmt;
+	}
+
+	public void setApprovedAmt(double approvedAmt) {
+		this.approvedAmt = approvedAmt;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public void setTotalClaimAmt(double totalClaimAmt) {
+		this.totalClaimAmt = totalClaimAmt;
+	}
 
 	public int getDomClmId() {
 		return domClmId;
