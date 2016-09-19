@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.ClaimBean;
 import bean.Hospital;
 import service.IndexService;
 
@@ -86,6 +88,30 @@ public class AdminController extends HttpServlet {
 					RequestDispatcher rd=request.getRequestDispatcher("AdminUpdateHospital.jsp");
 					rd.forward(request, response);
 				}
+				if(source.equals("claimApproval"))
+				{
+					ArrayList<ClaimBean> obj= new ArrayList<ClaimBean>();
+					obj=is.returnApprovalClaims();
+					if(obj.size()>0)
+					{
+						
+					}
+					else{
+					response.sendRedirect("/HealthInc/NoClaim.jsp");
+					}
+					
+				}
+				if(source.equals("employeeApproval"))
+				{
+					response.sendRedirect("/HealthInc/AdminEmployeeApproval.jsp");
+					
+				}
+				if(source.equals("dependentApproval"))
+				{
+					response.sendRedirect("/HealthInc/AdminDependentApproval.jsp");
+					
+				}
+				
 				
 			}
 		

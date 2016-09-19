@@ -90,4 +90,8 @@ public class IndexService {
 	public boolean deleteHospital(int hid){
 		return d.deleteHospital(hid);
 	}
+	public ArrayList<ClaimBean> returnApprovalClaims(){
+		return d.returnApprovalClaims();
+	}
+	
 }
