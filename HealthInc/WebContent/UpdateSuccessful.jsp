@@ -10,7 +10,9 @@
 	setTimeout("location.href='/HealthInc/EmpHome.jsp'", 2000);
 </script>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <h2>Updation Successful, Going Back!</h2>
 <a href="/HealthInc/MasterController?source=empBack">Go Back!</a>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

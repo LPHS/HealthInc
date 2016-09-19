@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:include page="Header.jsp"></jsp:include>
 
 <%Object o=request.getAttribute("hospital");
 Hospital h=null;
@@ -63,6 +63,6 @@ Hospital h=null;
 
 <input type="submit" name="source" value="Update Hospital Details">
 </form>
-
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

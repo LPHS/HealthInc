@@ -14,6 +14,7 @@ EmployeeBean emp=null;
 	} %>
 
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <script type="text/javascript">
 				function calculateTotal() {
 					premAmt = eval(0.02 * document.employee.totSum.value);
@@ -101,6 +102,6 @@ EmployeeBean emp=null;
 
 </form>
 
-
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

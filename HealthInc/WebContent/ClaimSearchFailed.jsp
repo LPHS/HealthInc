@@ -10,6 +10,8 @@
 </script>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <b>No claims found, redirecting to home page</b>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

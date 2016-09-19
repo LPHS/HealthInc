@@ -147,7 +147,7 @@ return true;
 </head>
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
-<jsp:include page="Footer.jsp"></jsp:include>
+
 <h2>Enter Details</h2>
 	<form name="employee" action="/HealthInc/IndexController" onsubmit="return validate()"
 		method="post">
@@ -228,5 +228,6 @@ return true;
 		</table>
 		<a href="/HealthInc/IndexController?source=back">Go back!</a>
 	</form>
+	<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

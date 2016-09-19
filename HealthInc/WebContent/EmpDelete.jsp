@@ -14,7 +14,7 @@ function myFunction() {
 </head>
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
-<jsp:include page="Footer.jsp"></jsp:include>
+
 <h2>Delete Profile of User</h3>
 
 <h4>Details of the Employee</h4>
@@ -77,6 +77,6 @@ EmployeeBean emp=null;
 			<td><a href="/HealthInc/MasterController?source=empBack">Go Back!</a></td></tr>
 		</table>
 </form>
-	
+<jsp:include page="Footer.jsp"></jsp:include>	
 </body>
 </html>

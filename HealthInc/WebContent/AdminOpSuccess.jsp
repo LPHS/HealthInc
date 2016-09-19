@@ -11,6 +11,8 @@
 </script>
 
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <h2>Operation Successful! Going Back!</h2>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

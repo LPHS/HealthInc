@@ -10,6 +10,8 @@
 </script>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <b>Session Expired, redirecting to index page</b>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

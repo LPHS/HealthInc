@@ -10,6 +10,8 @@
 	setTimeout("location.href='/HealthInc/Index.jsp'", 2000);
 </script>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <b>Registration Successful, you will now be redirected to the index page</b>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

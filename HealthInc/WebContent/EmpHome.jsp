@@ -8,7 +8,7 @@
 </head>
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
-<jsp:include page="Footer.jsp"></jsp:include>
+
 <table>
 <tr >
 <td colspan="3"><h4>Profile Operations</h4></td>
@@ -35,5 +35,6 @@
 </tr>
 
 </table>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

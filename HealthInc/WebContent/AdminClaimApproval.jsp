@@ -9,6 +9,7 @@
 <title>Admin Claim Approval</title>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <h4>Pending Claim Approvals</h4>
 
 <%
@@ -25,5 +26,6 @@ obj=(ArrayList<ClaimBean>)request.getAttribute("list");
 	</tr>
 <%} %>
 </table>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

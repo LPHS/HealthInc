@@ -10,6 +10,8 @@
 	setTimeout("location.href='/HealthInc/EmpHome.jsp'", 2000);
 </script>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <b>Dependent Succesfully Added, you will now be redirected to home page</b>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>
