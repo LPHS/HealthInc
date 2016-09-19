@@ -81,4 +81,13 @@ public class IndexService {
 	public ArrayList<ClaimBean> claimSearch(int hid){
 		return d.claimSearch(hid);
 	}
+
+	public boolean updateHospital(Hospital h) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public boolean deleteHospital(int hid){
+		return d.deleteHospital(hid);
+	}
 }

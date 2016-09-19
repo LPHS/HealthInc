@@ -18,50 +18,50 @@ Hospital h=null;
 	 %>
 
 <h2>Add Hospital</h2>
-<form action="/HealthInc/AdminController" method="post">
+<form action="/HealthInc/AdminController2" method="post">
 <table>
 <tr>
 <td>Hospital Id</td>
-<td><input type="text" name="id" id="id"></td>
+<td><input type="text" name="id" id="id" value="<%=h.getId()%>" readonly></td>
 </tr>
 
 <tr>
 <td>Name</td>
-<td><input type="text" name="name" id="name"></td>
+<td><input type="text" name="name" id="name" value="<%=h.getName()%>"></td>
 </tr>
 
 <tr>
 <td>Address</td>
-<td><input type="text" name="address" id="address"></td>
+<td><input type="text" name="address" id="address" value="<%=h.getName()%>"></td>
 </tr>
 
 <tr>
 <td>City Name</td>
-<td><input type="text" name="city" id="city"></td>
+<td><input type="text" name="city" id="city"  value="<%=h.getCity()%>"></td>
 </tr>
 
 <tr>
 <td>State</td>
-<td><input type="text" name="state" id="state"></td>
+<td><input type="text" name="state" id="state" value="<%=h.getState()%>"></td>
 </tr>
 
 <tr>
 <td>Pin Code</td>
-<td><input type="text" name="pin" id="pin"></td>
+<td><input type="text" name="pin" id="pin" value="<%=h.getPin()%>"></td>
 </tr>
 
 <tr>
 <td>STD Code</td>
-<td><input type="text" name="std" id="std"></td>
+<td><input type="text" name="std" id="std" value="<%=h.getStd()%>"></td>
 </tr>
 
 <tr>
 <td>Phone</td>
-<td><input type="text" name="phone" id="phone"></td>
+<td><input type="text" name="phone" id="phone" value="<%=h.getPhone()%>"></td>
 </tr>
 </table>
 
-<input type="submit" name="source" value="Add Hospital">
+<input type="submit" name="source" value="Update Hospital Details">
 </form>
 
 </body>
