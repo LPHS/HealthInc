@@ -31,7 +31,7 @@
 <tr>
 <td><a href="/HealthInc/MasterController?source=domClaim">Domiciliary Claim</a></td>
 <td><a href="/HealthInc/MasterController?source=hospClaim">Hospitalization Claim</a></td>
-<td><a href="/HealthInc/MasterController?source=searchClaim">Seacrh Claim</a></td>
+<td><a href="/HealthInc/MasterController?source=searchClaim">Search Claim</a></td>
 </tr>
 
 </table>

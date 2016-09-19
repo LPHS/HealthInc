@@ -460,6 +460,7 @@ public class Dao {
 			while(rs.next()){
 				cb=new ClaimBean();
 				cb.setClaimType("Domiciliary");
+				cb.setPatientName(rs.getString("benefName"));
 				cb.setMediAssistClaimNo(rs.getInt("domClmId"));
 				cb.setRelation(getRelationDep(hid,con));
 				cb.setClaimAmt(rs.getDouble("totalClaimAmt"));
@@ -475,6 +476,7 @@ public class Dao {
 			while(rs.next()){
 				cb=new ClaimBean();
 				cb.setClaimType("Hospitalization");
+				cb.setPatientName(rs.getString("nameOfPatient"));
 				cb.setMediAssistClaimNo(rs.getInt("hosClmId"));
 				cb.setRelation(rs.getString("relationship"));
 				cb.setClaimAmt(rs.getDouble("totalClaimAmt"));
