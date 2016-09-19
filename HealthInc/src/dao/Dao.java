@@ -138,7 +138,7 @@ public class Dao {
 			while(rs.next()){
 				emp=new EmployeeBean();
 				emp.setEmp_id(Integer.parseInt(id));
-				emp.setEmp_hi_id(Integer.parseInt(rs.getString("hi_id")));
+				emp.setEmp_hi_id(rs.getInt("hi_id"));
 				emp.setEmp_name(rs.getString("name"));
 				emp.setEmp_dob(rs.getString("dob"));
 				emp.setEmp_gen(rs.getString("gen"));
@@ -635,7 +635,6 @@ public class Dao {
 	public ArrayList<ClaimBean> returnApprovalClaims(){
 		Connection con = null;
 		PreparedStatement st=null;
-		int a=0;
 		con=DbTransaction.getConnection();
 		ResultSet rs=null;
 		ClaimBean cb=null;
@@ -679,5 +678,66 @@ public class Dao {
 		}
 		DbTransaction.closeConnection(con);
 		return cbList;
+	}
+	
+	//Approvals
+	public ArrayList<EmployeeBean> getEmpDetailApproval(){
+		Connection con = null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		EmployeeBean emp=null;
+		con = DbTransaction.getConnection();
+		ArrayList<EmployeeBean> empList=new ArrayList<EmployeeBean>();
+		try{
+			st=con.prepareStatement("select * from Employee where status=0");
+			rs=st.executeQuery();
+			while(rs.next()){
+				emp=new EmployeeBean();
+				emp.setEmp_id(rs.getInt("id"));
+				emp.setEmp_hi_id(rs.getInt("hi_id"));
+				emp.setEmp_name(rs.getString("name"));
+				emp.setEmp_dob(rs.getString("dob"));
+				emp.setEmp_gen(rs.getString("gen"));
+				emp.setEmp_email(rs.getString("email"));
+				emp.setEmp_alt_email(rs.getString("alt_mail"));
+				emp.setEmp_ph_no(rs.getString("ph_no"));
+				emp.setEmp_mob_no(rs.getString("mob_no"));
+				emp.setEmp_policy_start_date(rs.getString("policy_start_date"));
+				emp.setEmp_policy_period(rs.getInt("policy_period"));
+				emp.setEmp_tot_sum_ins(rs.getDouble("tot_sum_ins"));
+				emp.setEmp_prem_amt(rs.getDouble("prem_amt"));
+				emp.setEmp_acc_no(rs.getString("prem_amt"));
+				emp.setEmp_bnk_name(rs.getString("bnk_name"));
+				emp.setEmp_bnk_ifsc(rs.getString("ifsc"));
+				emp.setEmp_password(rs.getString("password"));
+				emp.setEmp_status(rs.getInt("status"));
+				empList.add(emp);
+				
+			}
+		}catch (SQLException s) {
+			s.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return empList;
+	}
+	public void setEmpStatus(int hid){
+	
+		Connection con=null;
+		PreparedStatement st=null;
+		int a=0;
+		con=DbTransaction.getConnection();
+		try {
+			st=con.prepareStatement("update Employee set status=1 where hi_id=?");
+			st.setInt(1, hid);
+			a=st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(a==1){
+			System.out.println("Employee approved");
+		}
+		else
+			System.out.println("Employee not approved");
 	}
 }
