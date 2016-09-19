@@ -126,3 +126,5 @@ alter table domclaim add status number(1)
 update hosclaim set status=0
 
 select * from domclaim
+
+create table Hospital (id number(10) primary key, name varchar2(30), address varchar2(30), city varchar2(30), state varchar2(20), pin number(10), std number(10), phone varchar2(15))
