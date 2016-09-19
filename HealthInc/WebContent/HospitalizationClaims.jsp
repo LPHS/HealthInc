@@ -22,6 +22,7 @@ function populate(hiid,gender,relation){
 <jsp:include page="Header.jsp"></jsp:include>
 	<form action="/HealthInc/MasterController" method=post
 		onsubmit="return validate()">
+		<h2>Hospitalization Claims</h2>
 		<table>
 			<%
 				EmployeeBean e = (EmployeeBean) request.getAttribute("emp");

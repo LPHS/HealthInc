@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.ClaimBean;
 import bean.DependentBean;
 import bean.DomiciliaryBean;
 import bean.EmployeeBean;
@@ -272,7 +273,23 @@ public class MasterController extends HttpServlet {
 						response.sendRedirect("/HealthInc/OperationFailed.jsp");
 					}	
 				}
+				
+				if(source.equals("searchClaim")){
+					response.sendRedirect("/HealthInc/ClaimSearch.jsp");
+				}
 
+				if(source.equals("claimSubmit")){
+					int hid=Integer.parseInt(request.getParameter("hi_id"));
+					ArrayList<ClaimBean> cbList=is.claimSearch(hid);
+					if(cbList.size()>0){
+						RequestDispatcher rd=request.getRequestDispatcher("/ClaimSearchResult.jsp");
+						request.setAttribute("cbList", cbList);
+						rd.forward(request, response);
+					}else{
+						response.sendRedirect("/HealthInc/ClaimSearchFailed.jsp");
+					}
+				}
+				
 				if(source.equals("empBack")){
 					response.sendRedirect("/HealthInc/EmpHome.jsp");
 				}
