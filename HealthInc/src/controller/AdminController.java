@@ -94,7 +94,9 @@ public class AdminController extends HttpServlet {
 					obj=is.returnApprovalClaims();
 					if(obj.size()>0)
 					{
-						
+						RequestDispatcher rd= request.getRequestDispatcher("AdminClaimAproval.jsp");
+						request.setAttribute("list", obj);
+						rd.forward(request, response);	
 					}
 					else{
 					response.sendRedirect("/HealthInc/NoClaim.jsp");
