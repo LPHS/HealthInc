@@ -631,4 +631,53 @@ public class Dao {
 		DbTransaction.closeConnection(con);
 		return false;
 	}
+	
+	public ArrayList<ClaimBean> returnApprovalClaims(){
+		Connection con = null;
+		PreparedStatement st=null;
+		int a=0;
+		con=DbTransaction.getConnection();
+		ResultSet rs=null;
+		ClaimBean cb=null;
+		ArrayList<ClaimBean> cbList=new ArrayList<ClaimBean>();
+		try {		
+			
+			//first searching from domiciliary claim tables
+			st=con.prepareStatement("select * from domclaim where status=0");
+			rs=st.executeQuery();
+			while(rs.next()){
+				int hid=rs.getInt("empHiId");
+				cb=new ClaimBean();
+				cb.setClaimType("Domiciliary");
+				cb.setPatientName(rs.getString("benefName"));
+				cb.setMediAssistClaimNo(rs.getInt("domClmId"));
+				cb.setRelation(getRelationDep(hid,con));
+				cb.setClaimAmt(rs.getDouble("totalClaimAmt"));
+				cb.setApprovedAmt(rs.getDouble("approvedAmt"));
+				cb.setStatus(rs.getInt("status"));
+				cbList.add(cb);
+			}
+			
+			//searching from hospitalization claim tables
+			st=con.prepareStatement("select * from hosclaim where status=0");
+			rs=st.executeQuery();
+			while(rs.next()){
+				cb=new ClaimBean();
+				cb.setClaimType("Hospitalization");
+				cb.setPatientName(rs.getString("nameOfPatient"));
+				cb.setMediAssistClaimNo(rs.getInt("hosClmId"));
+				cb.setRelation(rs.getString("relationship"));
+				cb.setClaimAmt(rs.getDouble("totalClaimAmt"));
+				cb.setApprovedAmt(rs.getDouble("approvedAmt"));
+				cb.setStatus(rs.getInt("status"));
+				cbList.add(cb);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return cbList;
+	}
 }
