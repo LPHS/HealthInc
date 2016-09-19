@@ -83,7 +83,7 @@ public class IndexService {
 	}
 
 	public boolean updateHospital(Hospital h) {
-		// TODO Auto-generated method stub
+		d.updateHospital(h);
 		return false;
 	}
 	
