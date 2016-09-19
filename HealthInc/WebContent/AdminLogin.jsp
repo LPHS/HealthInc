@@ -7,7 +7,7 @@
 <title>EmpH Inc.</title>
 </head>
 <body>
-<jsp:include page="Header.jsp"></jsp:include>
+<%session.invalidate(); %>
 <form action="/HealthInc/IndexController" method="post">
 <table>
 <tr>

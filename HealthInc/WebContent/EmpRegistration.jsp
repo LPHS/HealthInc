@@ -146,8 +146,7 @@ return true;
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="Header.jsp"></jsp:include>
-
+<%session.invalidate(); %>
 <h2>Enter Details</h2>
 	<form name="employee" action="/HealthInc/IndexController" onsubmit="return validate()"
 		method="post">

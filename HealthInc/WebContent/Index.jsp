@@ -7,7 +7,7 @@
 <title>EmpH Inc.</title>
 </head>
 <body>
-<jsp:include page="Header.jsp"></jsp:include>
+<%session.invalidate(); %>
 <div>
 <a href="/HealthInc/IndexController?source=registration">Click here to Register!</a>
 </div>
