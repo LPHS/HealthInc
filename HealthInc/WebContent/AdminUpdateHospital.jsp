@@ -18,7 +18,7 @@ Hospital h=null;
 	 %>
 
 <h2>Add Hospital</h2>
-<form action="/HealthInc/AdminController2" method="post">
+<form action="/HealthInc/AdminController" method="post">
 <table>
 <tr>
 <td>Hospital Id</td>
