@@ -13,6 +13,14 @@ ArrayList<DependentBean> dblist=null;
 	} %>
 
 <body>
+<% if(!(dblist.size()>0))
+{
+%>
+<h2>NO dependents!</h2>
+<%
+}
+else{
+%>
 <form action="/HealthInc/MasterController" method="post">
 <table>
 <tr>
@@ -36,5 +44,6 @@ ArrayList<DependentBean> dblist=null;
 <input type="submit" name="source" value="Update Dependent">
 <input type="submit" name="source" value="Delete Dependent">
 </form>
+<%} %>
 </body>
 </html>

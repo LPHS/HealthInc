@@ -110,14 +110,12 @@ public class MasterController extends HttpServlet {
 					System.out.println(ids);
 					int id=Integer.parseInt(ids);
 					dlist=is.getDependents(id);
-					System.out.println("Dependent list fetched"+dlist.get(0).getDep_id());
-					if(dlist!=null)
-					{
+					//System.out.println("Dependent list fetched"+dlist.get(0).getDep_id());
 						request.setAttribute("deplist", dlist);
 						RequestDispatcher rd=request.getRequestDispatcher("ViewDependents.jsp");
 						rd.forward(request, response);
 						
-					}
+					
 					
 				}
 				

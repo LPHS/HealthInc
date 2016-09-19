@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
-	setTimeout("location.href='/HealthInc/Index.jsp'", 2000);
+	setTimeout("location.href='/HealthInc/EmpHome.jsp'", 2000);
 </script>
 <body>
 <h2>Updation Successful, Going Back!</h2>
