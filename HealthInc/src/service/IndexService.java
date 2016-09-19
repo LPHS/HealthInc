@@ -83,8 +83,8 @@ public class IndexService {
 	}
 
 	public boolean updateHospital(Hospital h) {
-		d.updateHospital(h);
-		return false;
+		return d.updateHospital(h);
+		
 	}
 	
 	public boolean deleteHospital(int hid){
