@@ -88,6 +88,48 @@ public class AdminController extends HttpServlet {
 					RequestDispatcher rd=request.getRequestDispatcher("AdminUpdateHospital.jsp");
 					rd.forward(request, response);
 				}
+				
+				if(source.equals("Update Hospital Details"))
+				{
+					Hospital h=new Hospital();
+					h.setId(Integer.parseInt(request.getParameter("id")));
+					h.setName(request.getParameter("name"));
+					h.setAddress(request.getParameter("address"));
+					h.setCity(request.getParameter("city"));
+					h.setPhone(request.getParameter("phone"));
+					h.setPin(Integer.parseInt(request.getParameter("pin")));
+					h.setStd(Integer.parseInt(request.getParameter("std")));
+					h.setState(request.getParameter("state"));
+					System.out.println("hosp name to update:"+h.getName());
+					boolean b=is.updateHospital(h);
+					System.out.println(b);
+					if(b)
+					{	System.out.println(is.updateHospital(h));
+						response.sendRedirect("/HealthInc/AdminOpSuccess.jsp");
+						
+					}
+					else
+					{
+						response.sendRedirect("/HealthInc/AdminOpFail.jsp");
+					}
+				}
+				
+				if(source.equals("Delete Hospital"))
+				{
+					
+					int hid=Integer.parseInt(request.getParameter("id"));
+										
+					if(is.deleteHospital(hid))
+					{
+						response.sendRedirect("/HealthInc/AdminOpSuccess.jsp");
+					}
+					else
+					{
+						response.sendRedirect("/HealthInc/AdminOpFail.jsp");
+					}
+				
+				}
+				
 				if(source.equals("claimApproval"))
 				{
 					ArrayList<ClaimBean> obj= new ArrayList<ClaimBean>();
