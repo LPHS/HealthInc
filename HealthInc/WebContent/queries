@@ -58,7 +58,8 @@ create table dependents(
 	policy_start_date varchar(20),
 	policy_period number(5),
 	tot_sum_ins number(20,10),
-	prem_amt number(20,10)
+	prem_amt number(20,10),
+	status number(1)
 	
 )
 
@@ -85,7 +86,9 @@ create table domclaim(
 	dateOfInjuiry varchar(20),
 	nameOfDoctor varchar(30),
 	DetailsOfInjuiry varchar(30),
-	totalClaimAmt number(20,10)
+	totalClaimAmt number(20,10),
+	status number(1),
+	approvedAmt number(20,10)
 
 )
 
@@ -115,30 +118,14 @@ create table hosclaim(
 	nameOfDoctor varchar(30),
 	DetailsOfInjuiry varchar(30),
 	reasonForInjury varchar(30),
-	totalClaimAmt number(20,10)
+	totalClaimAmt number(20,10),
+	status number(1),
+	approvedAmt number(20,10)
 
 )
 
-alter table hosclaim add status number(1)
-alter table domclaim add status number(1)
 
-
-update hosclaim set status=0
-
-select * from domclaim
 
 create table Hospital (id number(10) primary key, name varchar2(30), address varchar2(30), city varchar2(30), state varchar2(20), pin number(10), std number(10), phone varchar2(15))
 
-alter table hosclaim add approvedAmt number(20,10);
-alter table domclaim add approvedAmt number(20,10);
 
-update hosclaim set approvedAmt=0;
-update domclaim set approvedAmt=0;
-
-update dependents set status=0;
-
-select relation from dependents where hi_id=100000004
-
-select relation from dependents where hi_id=?
-
-select * from domclaim where empHiId=100000004
