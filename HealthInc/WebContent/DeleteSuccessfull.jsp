@@ -10,6 +10,8 @@
 </script>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 	<b>deletion successful, you will now be logged out</b>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

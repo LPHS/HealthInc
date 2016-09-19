@@ -13,6 +13,7 @@ ArrayList<DependentBean> dblist=null;
 	} %>
 
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <% if(!(dblist.size()>0))
 {
 %>
@@ -45,5 +46,6 @@ else{
 <input type="submit" name="source" value="Delete Dependent">
 </form>
 <%} %>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

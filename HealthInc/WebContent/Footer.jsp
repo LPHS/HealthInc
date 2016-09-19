@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <div id="footer" style="position:absolute;bottom:6px;width:97.5%;float:right;text-align:right;">
 	&copy; HealthInc &nbsp; &nbsp; &nbsp; &copy; TCS HJA18 
 </div>	
