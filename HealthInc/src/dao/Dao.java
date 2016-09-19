@@ -720,6 +720,7 @@ public class Dao {
 		DbTransaction.closeConnection(con);
 		return empList;
 	}
+	
 	public void setEmpStatus(int hid){
 	
 		Connection con=null;
@@ -739,5 +740,58 @@ public class Dao {
 		}
 		else
 			System.out.println("Employee not approved");
+	}
+	
+	public ArrayList<DependentBean> getDepDetailApproval(){
+		Connection con = null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		DependentBean db=null;
+		con = DbTransaction.getConnection();
+		ArrayList<DependentBean> depList=new ArrayList<DependentBean>();
+		try {
+			st=con.prepareStatement("select * from dependents where status=0");
+			rs=st.executeQuery();
+			while(rs.next()){
+				db=new DependentBean();
+				db.setDep_hi_id(rs.getInt("hi_id"));
+				db.setDep_id(rs.getInt("emp_id"));
+				db.setDep_name(rs.getString("name"));
+				db.setDep_relation(rs.getString("relation"));
+				db.setDep_dob(rs.getString("dob"));
+				db.setDep_gender(rs.getString("gen"));
+				db.setDep_policy_start_date(rs.getString("policy_start_date"));
+				db.setDep_policy_period(rs.getInt("policy_period"));
+				db.setDep_tot_sum_ins(rs.getDouble("tot_sum_ins"));
+				db.setDep_prem_amt(rs.getDouble("prem_amt"));
+				db.setStatus(rs.getInt("status"));
+				depList.add(db);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return depList;
+	}
+	
+	public void setDepStatus(int hid){
+		
+		Connection con=null;
+		PreparedStatement st=null;
+		int a=0;
+		con=DbTransaction.getConnection();
+		try {
+			st=con.prepareStatement("update dependents set status=1 where hi_id=?");
+			st.setInt(1, hid);
+			a=st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(a==1){
+			System.out.println("Dependent approved");
+		}
+		else
+			System.out.println("Dependent not approved");
 	}
 }

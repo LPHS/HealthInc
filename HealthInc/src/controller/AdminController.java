@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.ClaimBean;
+import bean.DependentBean;
 import bean.EmployeeBean;
 import bean.Hospital;
 import service.IndexService;
@@ -161,10 +162,21 @@ public class AdminController extends HttpServlet {
 					request.setAttribute("empList", empList);
 					rd.forward(request, response);
 				}
-				if(source.equals("dependentApproval"))
+				if(source.equals("DependentApproval"))
 				{
-					response.sendRedirect("/HealthInc/AdminDependentApproval.jsp");
+					ArrayList<DependentBean> depList=is.getDepDetailApproval();
+					RequestDispatcher rd=request.getRequestDispatcher("/AdminDependentApproval.jsp");
+					request.setAttribute("depList", depList);
+					rd.forward(request, response);
 					
+				}
+				if(source.equals("ApproveDep")){
+					int hid=Integer.parseInt(request.getParameter("hid"));
+					is.setDepStatus(hid);			
+					ArrayList<DependentBean> depList=is.getDepDetailApproval();
+					RequestDispatcher rd=request.getRequestDispatcher("/AdminDependentApproval.jsp");
+					request.setAttribute("depList", depList);
+					rd.forward(request, response);
 				}
 				if(source.equals("adminBack")){
 					response.sendRedirect("/HealthInc/AdminHome.jsp");
