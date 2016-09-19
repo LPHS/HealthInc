@@ -10,6 +10,7 @@ import bean.ClaimBean;
 import bean.DependentBean;
 import bean.DomiciliaryBean;
 import bean.EmployeeBean;
+import bean.Hospital;
 import bean.HospitalizationBean;
 import util.DbTransaction;
 
@@ -509,5 +510,99 @@ public class Dao {
 			e.printStackTrace();
 		}
 		return relation;
+	}
+	
+	public boolean addHospital(Hospital h) {
+		Connection con=null;
+		PreparedStatement st=null;
+		int a=0;
+		con=DbTransaction.getConnection();
+		try {
+			st=con.prepareStatement("insert into Hospital values(?,?,?,?,?,?,?,?)");
+			st.setInt(1, h.getId());
+			st.setString(2,h.getName());
+			st.setString(3, h.getAddress());
+			st.setString(4, h.getCity());
+			st.setString(5, h.getState());
+			st.setLong(6, h.getPin());
+			st.setLong(7, h.getStd());
+			st.setString(8, h.getPhone());
+			a=st.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(a==1){
+			System.out.println("Hospital Created");
+			return true;
+		}
+		System.out.println("Hospital Creation Failed");
+		return false;
+	}
+	
+	
+	public boolean updateHospital(Hospital h)
+	{
+		Connection con = null;
+		PreparedStatement st=null;
+		con = DbTransaction.getConnection();
+		try {
+			st = con.prepareStatement("Update dependents Set name=?, relation=?, dob=?, gen=?, policy_start_date=?, policy_period=?, tot_sum_ins=?,prem_amt=? where hi_id=?");
+			st.setString(1, h.getDep_name());
+			st.setString(2, h.getDep_relation());
+			st.setString(3, h.getDep_dob());
+			st.setString(4, h.getDep_gender());
+			st.setString(5, h.getDep_policy_start_date());
+			st.setInt(6, h.getDep_policy_period());
+			st.setDouble(7, h.getDep_tot_sum_ins());
+			st.setDouble(8, h.getDep_prem_amt());
+			st.setInt(9,h.getDep_hi_id());
+
+			int flag=st.executeUpdate();
+			if(flag==1)
+			{	System.out.println("Updated Successfully, 1");
+				return true;
+			}
+			System.out.println("could not Update, not 1");
+			return false;
+		
+		} catch (SQLException s) {
+			s.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return false;
+	}
+
+	public Hospital getHospital(int hid) {
+		Hospital h=null;
+		Connection con = null;
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		con = DbTransaction.getConnection();
+		DependentBean db=null;
+		try{
+			st=con.prepareStatement("select * from Hospital where id=?");
+			st.setInt(1, hid);
+			rs=st.executeQuery();
+			db=new DependentBean();
+			while(rs.next()){
+				h=new Hospital();
+				h.setId(rs.getInt("id"));
+				h.setName(rs.getString("name"));
+				h.setAddress(rs.getString("address"));
+				h.setCity(rs.getString("city"));
+				h.setPhone(rs.getString("phome"));
+				h.setPin(rs.getInt("pin"));
+				h.setState(rs.getString("state"));
+				h.setStd(rs.getInt("std"));
+				}
+			return h;
+		}catch (SQLException s) {
+			s.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return h;
+		
 	}
 }

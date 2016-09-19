@@ -14,6 +14,7 @@
 Hospital h=null;
 	if(o!=null){
 		h=(Hospital)o;
+	}
 	 %>
 
 <h2>Add Hospital</h2>
