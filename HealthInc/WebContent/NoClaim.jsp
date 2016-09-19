@@ -10,6 +10,6 @@
 <title>No claims</title>
 </head>
 <body>
-<h3>Currently You have no Pending Claims</h3>
+<h3>Currently You have no Pending Claims, You will be redirected to the Home Page.</h3>
 </body>
 </html>
