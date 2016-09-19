@@ -7,7 +7,7 @@
 <title>EmpH Inc.</title>
 </head>
 <body>
-
+<%session.invalidate(); %>
 <form action="/HealthInc/IndexController" method="post">
 <table>
 <tr>
@@ -29,5 +29,6 @@
 	<%} %>
 </div>
 <a href="/HealthInc/IndexController?source=back">Go back!</a>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

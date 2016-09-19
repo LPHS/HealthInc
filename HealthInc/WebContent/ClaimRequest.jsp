@@ -10,7 +10,9 @@
 </script>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <b>Claim successfully registered, waiting for approval</b><br>
 Redirecting to home page
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

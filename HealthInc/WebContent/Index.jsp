@@ -7,6 +7,7 @@
 <title>EmpH Inc.</title>
 </head>
 <body>
+<%session.invalidate(); %>
 <div>
 <a href="/HealthInc/IndexController?source=registration">Click here to Register!</a>
 </div>
@@ -36,6 +37,6 @@
 <a href="/HealthInc/IndexController?source=adminLoginRedirect">Admin Login!</a>
 </div>
 
-
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

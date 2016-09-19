@@ -10,6 +10,8 @@
 <title>No claims</title>
 </head>
 <body>
+<jsp:include page="Header.jsp"></jsp:include>
 <h3>Currently You have no Pending Claims, You will be redirected to the Home Page.</h3>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

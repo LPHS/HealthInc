@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Error Page</title>
 </head>
+<script type="text/javascript">
+	setTimeout("location.href='/HealthInc/Index.jsp'", 2000);
+</script>
 <body>
-
+<b>Something went wrong redirecting to index page</b>
 </body>
 </html>

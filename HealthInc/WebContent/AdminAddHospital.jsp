@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:include page="Header.jsp"></jsp:include>
 <h2>Add Hospital</h2>
 <form action="/HealthInc/AdminController" method="post">
 <table>
@@ -54,5 +54,6 @@
 
 <input type="submit" name="source" value="Add Hospital">
 </form>
+<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

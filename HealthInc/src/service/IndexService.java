@@ -90,8 +90,24 @@ public class IndexService {
 	public boolean deleteHospital(int hid){
 		return d.deleteHospital(hid);
 	}
+	
+	public ArrayList<EmployeeBean> getEmpDetailApproval(){
+		return d.getEmpDetailApproval();
+	}
+	
+	public ArrayList<DependentBean> getDepDetailApproval(){
+		return d.getDepDetailApproval();
+	}
+	
 	public ArrayList<ClaimBean> returnApprovalClaims(){
 		return d.returnApprovalClaims();
 	}
 	
+	public void setEmpStatus(int hid){
+		d.setEmpStatus(hid);
+	}
+	
+	public void setDepStatus(int hid){
+		d.setDepStatus(hid);
+	}
 }
