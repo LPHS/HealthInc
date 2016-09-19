@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import bean.DependentBean;
 import bean.DomiciliaryBean;
 import bean.EmployeeBean;
+import bean.Hospital;
 import bean.HospitalizationBean;
 import dao.Dao;
 
@@ -66,5 +67,13 @@ public class IndexService {
 
 	public boolean hosClaim(HospitalizationBean hos) {
 		return d.hosClaim(hos);
+	}
+
+	public boolean addHospital(Hospital h) {
+		return d.addHospital(h);
+	}
+
+	public Hospital getHospital(int hid) {
+		return d.getHospital(hid);
 	}
 }

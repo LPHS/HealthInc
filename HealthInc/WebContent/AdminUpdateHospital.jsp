@@ -1,3 +1,4 @@
+<%@page import="bean.Hospital"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,6 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
+<%Object o=request.getAttribute("hospital");
+Hospital h=null;
+	if(o!=null){
+		h=(Hospital)o;
+	 %>
 
 <h2>Add Hospital</h2>
 <form action="/HealthInc/AdminController" method="post">
@@ -51,6 +59,9 @@
 <td><input type="text" name="phone" id="phone"></td>
 </tr>
 </table>
+
+<input type="submit" name="source" value="Add Hospital">
 </form>
+
 </body>
 </html>

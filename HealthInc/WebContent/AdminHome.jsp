@@ -23,8 +23,7 @@
 </tr>
 <tr>
 <td><a href="/HealthInc/AdminController?source=addHospital">Add Hospital</a></td>
-<td colspan="2"><a href="/HealthInc/AdminController?source=updateHospital">Update Hospital</a></td>
-<td colspan="2"><a href="/HealthInc/AdminController?source=deleteHospital">Delete Hospital</a></td>
+<td colspan="3"><a href="/HealthInc/AdminController?source=viewHospital">View Hospital</a></td>
 </tr>
 <tr >
 <td colspan="3"><h4>Employee Operations</h4></td>
