@@ -10,6 +10,7 @@
 </head>
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>
+	<h2>Employee Approval</h2>
 	<table>
 		<tr>
 			<th>Employee Id</th>
