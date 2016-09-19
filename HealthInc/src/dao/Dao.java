@@ -547,19 +547,19 @@ public class Dao {
 		Connection con = null;
 		PreparedStatement st=null;
 		con = DbTransaction.getConnection();
-		try {
-			st = con.prepareStatement("Update dependents Set name=?, relation=?, dob=?, gen=?, policy_start_date=?, policy_period=?, tot_sum_ins=?,prem_amt=? where hi_id=?");
-			st.setString(1, h.getDep_name());
-			st.setString(2, h.getDep_relation());
-			st.setString(3, h.getDep_dob());
-			st.setString(4, h.getDep_gender());
-			st.setString(5, h.getDep_policy_start_date());
-			st.setInt(6, h.getDep_policy_period());
-			st.setDouble(7, h.getDep_tot_sum_ins());
-			st.setDouble(8, h.getDep_prem_amt());
-			st.setInt(9,h.getDep_hi_id());
-
+			try {
+			st = con.prepareStatement("Update Hospital Set name=?, address=?, city=?, state=?, pin=?, std=?, phone=? where id=?");
+			st.setString(1,h.getName());
+			st.setString(2,h.getAddress());
+			st.setString(3,h.getCity());
+			st.setString(4,h.getState());
+			st.setInt(5,h.getPin());
+			st.setInt(6, h.getStd());
+			st.setString(7,h.getPhone());
+			st.setInt(8, h.getId());
+			
 			int flag=st.executeUpdate();
+			System.out.println("flag=:"+flag);
 			if(flag==1)
 			{	System.out.println("Updated Successfully, 1");
 				return true;
@@ -592,7 +592,7 @@ public class Dao {
 				h.setName(rs.getString("name"));
 				h.setAddress(rs.getString("address"));
 				h.setCity(rs.getString("city"));
-				h.setPhone(rs.getString("phome"));
+				h.setPhone(rs.getString("phone"));
 				h.setPin(rs.getInt("pin"));
 				h.setState(rs.getString("state"));
 				h.setStd(rs.getInt("std"));
@@ -604,5 +604,29 @@ public class Dao {
 		DbTransaction.closeConnection(con);
 		return h;
 		
+	}
+
+	public boolean deleteHospital(int hid) {
+		Connection con = null;
+		PreparedStatement st=null;
+		con = DbTransaction.getConnection();
+		
+		try {
+			st = con.prepareStatement("delete from Hospital where id=?");
+			st.setInt(1,hid);
+			
+			int flag=st.executeUpdate();
+			if(flag==1)
+			{	System.out.println("Deleted Successfully, 1");
+				return true;
+			}
+			System.out.println("could not Delete, not 1");
+			return false;
+		
+		} catch (SQLException s) {
+			s.printStackTrace();
+		}
+		DbTransaction.closeConnection(con);
+		return false;
 	}
 }
