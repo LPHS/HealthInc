@@ -10,7 +10,7 @@
 
 <div id=header>
 Welcome <%=session.getAttribute("id").toString() %>
-<span id=logout><a href="/HealthInc/IndexController">Logout</a></span>
+<span id=logout><a href="/HealthInc/IndexController?source=logout">Logout</a></span>
 </div>
 </body>
 </html>

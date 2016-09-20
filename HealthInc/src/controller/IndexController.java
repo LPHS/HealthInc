@@ -21,19 +21,22 @@ public class IndexController extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.invalidate();
-		RequestDispatcher rd = request.getRequestDispatcher("/Index.jsp");
-		request.setAttribute("msg", "Logged out succesfully");
-		rd.forward(request, response);
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String source = request.getParameter("source");
+		if (source != null && source == "logout") {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			RequestDispatcher rd = request.getRequestDispatcher("/Index.jsp");
+			request.setAttribute("msg", "Logged out succesfully");
+			rd.forward(request, response);
+		}
 
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		IndexService is = new IndexService();
 		String source = request.getParameter("source");
 		if (source != null) {
@@ -55,9 +58,12 @@ public class IndexController extends HttpServlet {
 				e.setEmp_ph_no(request.getParameter("phnNo"));
 				e.setEmp_mob_no(request.getParameter("altMobNo"));
 				e.setEmp_policy_start_date(request.getParameter("polStDate"));
-				e.setEmp_policy_period(Integer.parseInt(request.getParameter("polPeriod")));
-				e.setEmp_tot_sum_ins(Double.parseDouble(request.getParameter("totSum")));
-				e.setEmp_prem_amt(Double.parseDouble(request.getParameter("pamt")));
+				e.setEmp_policy_period(Integer.parseInt(request
+						.getParameter("polPeriod")));
+				e.setEmp_tot_sum_ins(Double.parseDouble(request
+						.getParameter("totSum")));
+				e.setEmp_prem_amt(Double.parseDouble(request
+						.getParameter("pamt")));
 				e.setEmp_acc_no(request.getParameter("bankAccNo"));
 				e.setEmp_bnk_name(request.getParameter("bankName"));
 				e.setEmp_bnk_ifsc(request.getParameter("ifsc"));
@@ -67,7 +73,8 @@ public class IndexController extends HttpServlet {
 				if (flag == true) {
 					response.sendRedirect("/HealthInc/RegistrationSuccessful.jsp");
 				} else {
-					RequestDispatcher rd = request.getRequestDispatcher("/Index.jsp");
+					RequestDispatcher rd = request
+							.getRequestDispatcher("/Index.jsp");
 					request.setAttribute("msg", "Registration Failed");
 					rd.forward(request, response);
 				}
@@ -86,7 +93,8 @@ public class IndexController extends HttpServlet {
 					session.setAttribute("hid", e.getEmp_hi_id());
 					response.sendRedirect("/HealthInc/EmpHome.jsp");
 				} else {
-					RequestDispatcher rd = request.getRequestDispatcher("/Index.jsp");
+					RequestDispatcher rd = request
+							.getRequestDispatcher("/Index.jsp");
 					request.setAttribute("msg", "Login Failed");
 					rd.forward(request, response);
 				}
@@ -105,7 +113,8 @@ public class IndexController extends HttpServlet {
 
 					response.sendRedirect("/HealthInc/AdminHome.jsp");
 				} else {
-					RequestDispatcher rd = request.getRequestDispatcher("/AdminLogin.jsp");
+					RequestDispatcher rd = request
+							.getRequestDispatcher("/AdminLogin.jsp");
 					request.setAttribute("msg", "Login Failed");
 					rd.forward(request, response);
 				}

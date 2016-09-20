@@ -9,7 +9,7 @@ public class DbTransaction
 	private static Connection connection=null;
 	private static String url="jdbc:oracle:thin:@localhost:1521:xe";
 	private static String user="system";
-	private static String password="pratyush";
+	private static String password="suraj";
 
 	public static Connection getConnection() 
 	{
