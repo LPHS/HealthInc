@@ -52,8 +52,12 @@ function validate(){
 	}
 }
 
-function populate(hid){
-	document.getElementById("hiid").value=hid;
+function populate(){
+	
+	  var selectBox = document.getElementById("benef_sel");
+	    var hid = selectBox.value;
+	    document.getElementById("hiid").value=hid;
+	 
 }
 </script>
 </head>
@@ -99,11 +103,11 @@ body{
 			%>
 			<tr>
 				<td>Beneficiary:</td>
-				<td><select name="benef_sel">
+				<td><select name="benef_sel" id="benef_sel" onclick="populate()">
 						<%
 							for (DependentBean d : depList) {
 						%>
-						<option value="<%=d.getDep_name()%>" onclick="populate(<%=d.getDep_hi_id()%>)"><%=d.getDep_name()%></option>
+						<option value="<%=d.getDep_hi_id()%>" ><%=d.getDep_name()%></option>
 
 						<%
 							}
@@ -113,7 +117,7 @@ body{
 
 			<tr>
 				<td>HealthInsurance ID:</td>
-				<td><input type="text" name="hiid" id="hiid" readOnly></td>
+				<td><input type="text" name="hiid" id="hiid" readonly></td>
 			</tr>
 
 			<%

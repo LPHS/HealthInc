@@ -9,11 +9,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>HospitalizationClaims</title>
 <script>
-function populate(hiid,gender,relation){
+function populate(){
 
-	document.getElementById("gender").value=gender;
-	document.getElementById("relationship").value=relation;
-	document.getElementById("hi_id").value=hiid;
+	  var selectBox = document.getElementById("patient_name");
+	    var val = selectBox.value;
+	    var hind=val.indexOf(",");
+	    var hid=val.substring(0,hind);
+	    var gind=val.lastIndexOf(",");
+	    var gender=val.substring(hind+1,gind);
+	    var relation=val.substring(gind+1,val.length);
+	    
+	    document.getElementById("hi_id").value=hid;
+	    document.getElementById("gender").value=gender;
+	    document.getElementById("relationship").value=relation;
+	    
+	    
 	
 }
 </script>
@@ -188,11 +198,11 @@ body{
 
 			<tr>
 				<td>Name of Patient:</td>
-				<td><select name="patient_name">
+				<td><select name="patient_name" id="patient_name" onclick="populate()" >
 						<%
 							for (DependentBean d : depList) {
 						%>
-						<option value="<%=d.getDep_name()%>" onclick="populate(<%=d.getDep_hi_id()%>,'<%=d.getDep_gender()%>','<%=d.getDep_relation()%>')"><%=d.getDep_name()%></option>
+						<option value="<%=d.getDep_hi_id()%>,<%=d.getDep_gender()%>,<%=d.getDep_relation()%>" ><%=d.getDep_name()%></option>
 
 						<%
 							}
