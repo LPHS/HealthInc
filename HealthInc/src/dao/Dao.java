@@ -250,6 +250,7 @@ public class Dao {
 				db.setDep_hi_id(rs.getInt("hi_id"));
 				db.setDep_name(rs.getString("name"));
 				db.setDep_relation(rs.getString("relation"));
+				db.setDep_dob(rs.getString("DOB"));
 				db.setDep_gender(rs.getString("gen"));
 				db.setDep_policy_start_date(rs.getString("policy_start_date"));
 				db.setDep_policy_period(rs.getInt("policy_period"));

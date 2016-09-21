@@ -293,10 +293,21 @@ public class MasterController extends HttpServlet {
 				if(source.equals("empBack")){
 					response.sendRedirect("/HealthInc/EmpHome.jsp");
 				}
+				
+				if(source.equals("eCard")){
+					RequestDispatcher rd=request.getRequestDispatcher("/geteCard.jsp");
+					int eid=Integer.parseInt(session.getAttribute("id").toString());
+					ArrayList<DependentBean> dbList=is.getDependents(eid);
+					request.setAttribute("dbList", dbList);
+					rd.forward(request, response);
+					
+				}
 			}
 		}else{
 			response.sendRedirect("SessionExpired.jsp");
 		}
+		
+		
 		
 	}
 

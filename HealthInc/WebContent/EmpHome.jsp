@@ -58,6 +58,9 @@ body{
 <td><a href="/HealthInc/MasterController?source=hospClaim"><strong>Hospitalization Claim</strong></a></td>
 
 </tr>
+<tr>
+<td colspan="3"><a href="/HealthInc/MasterController?source=eCard"><strong>Generate eCard</strong></td>
+</tr>
 
 </table>
 </fieldset></div></div>
