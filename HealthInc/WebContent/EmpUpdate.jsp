@@ -13,8 +13,34 @@ EmployeeBean emp=null;
 		emp=(EmployeeBean)o;
 	} %>
 
+<style>
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    padding: 6px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: skyblue;
+    color: white;
+}
+
+body{
+	background-image:url("wood.jpg")
+
+}
+</style>
+
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
+<div class="container">
+<div class="content" style="padding-left:20%; padding-right:20%; padding-top:7%; padding-bottom:7%; text-align:left; color:white;">
+<fieldset style=" background-color:grey; opacity: 0.7; filter: alpha(opacity=70); border-radius:25px;">
+<h1><strong><center>Update Employee Details</center></strong></h1><hr>
 <script type="text/javascript">
 				function calculateTotal() {
 					premAmt = eval(0.02 * document.employee.totSum.value);
@@ -96,11 +122,12 @@ EmployeeBean emp=null;
 			<tr>
 			<td><input type="submit" name="source" value="update"></td>
 			<td><input type="reset" value="reset"></td></tr>
-		</table>
+		</table><br><br>
 		
-		
+		<a href="/HealthInc/MasterController?source=empBack">Go back!</a>
 
 </form>
+</fieldset></div></div>
 
 <jsp:include page="Footer.jsp"></jsp:include>
 </body>

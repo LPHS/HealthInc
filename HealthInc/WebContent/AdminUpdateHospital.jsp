@@ -63,6 +63,7 @@ Hospital h=null;
 
 <input type="submit" name="source" value="Update Hospital Details">
 </form>
+<a href="/HealthInc/AdminController?source=adminBack">Go back!</a>
 <jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

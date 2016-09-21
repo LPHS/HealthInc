@@ -6,21 +6,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>EmpH Inc.</title>
 </head>
+
+<style>
+
+
+body{
+	background-image: url("1451172869465.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+}
+</style>
+
 <body>
+<div class="container">
+<div class="content" style="padding-left:30%; padding-right:30%; padding-top:10%; padding-bottom:10%; text-align:left; color:white;">
+<fieldset style=" background-color:grey; opacity: 0.7; filter: alpha(opacity=70); border-radius:25px;">
 <%session.invalidate(); %>
 <form action="/HealthInc/IndexController" method="post">
-<table>
+<h1><strong><center>Admin Log In</center></strong></h1><hr>
 <tr>
-<td>Id :</td>
-<td><input type="text" name="id" id="id" ></td>
+<strong>Id</strong><br> &nbsp
+<input type="text" name="id" id="id" ><br><br>
 </tr>
 <tr>
-<td>Password:</td>
-<td><input type="password" name="pass" id="pass" ></td>
-</tr>
-</table>
+<strong>Password</strong><br> &nbsp
+<input type="password" name="pass" id="pass" ><br><br>
+</tr><hr>
+<center>
 <input type="submit" value="Login">
-<input type="hidden" name="source" value="adminLogin">
+<input type="hidden" name="source" value="adminLogin"><br><br>
+<a href="/HealthInc/IndexController?source=back" style="color:white;">Go back!</a>
+</center>
 </form>
 <div>
 <%Object msg=request.getAttribute("msg");
@@ -28,7 +44,8 @@
 	<%=msg %>
 	<%} %>
 </div>
-<a href="/HealthInc/IndexController?source=back">Go back!</a>
+
+</fieldset></div></div>
 <jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

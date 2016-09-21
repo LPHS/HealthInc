@@ -240,7 +240,7 @@ public class Dao {
 		ArrayList<DependentBean> dblist=null;
 		con = DbTransaction.getConnection();
 		try{
-			st=con.prepareStatement("select * from Dependents where emp_id=?");
+			st=con.prepareStatement("select * from Dependents where emp_id=? and status=1");
 			st.setInt(1, id);
 			rs=st.executeQuery();
 			dblist=new ArrayList<DependentBean>();

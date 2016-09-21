@@ -8,8 +8,10 @@
 </head>
 <body>
 
-<div id=header>
-Welcome <%=session.getAttribute("id").toString() %>
+<div id=header style="text-align:right; color:#faebd7;">
+<strong>Welcome <%=session.getAttribute("id").toString() %></strong>
+<br>
+
 <span id=logout><a href="/HealthInc/IndexController?source=logout">Logout</a></span>
 </div>
 </body>

@@ -12,12 +12,39 @@ function myFunction() {
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>delete</title>
 </head>
+
+<style>
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    padding: 6px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: skyblue;
+    color: white;
+}
+
+body{
+	background-image:url("wood.jpg")
+
+}
+</style>
+
+
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
+<div class="container">
+<div class="content" style="padding-left:20%; padding-right:20%; padding-top:7%; padding-bottom:7%; text-align:left; color:white;">
+<fieldset style=" background-color:grey; opacity: 0.7; filter: alpha(opacity=70); border-radius:25px;">
 
-<h2>Delete Profile of User</h3>
+<h2><strong><center>Delete Profile of User</center></strong></h2><hr>
 
-<h4>Details of the Employee</h4>
+
 <%Object o=request.getAttribute("emp");
 EmployeeBean emp=null;
 	if(o!=null){
@@ -74,9 +101,11 @@ EmployeeBean emp=null;
 			</tr>
 			<tr>
 			<td><input type="submit" name="source" value="delete" onclick="myFunction()"></td>
-			<td><a href="/HealthInc/MasterController?source=empBack">Go Back!</a></td></tr>
-		</table>
+			
+		</table><br>
+		<a href="/HealthInc/MasterController?source=empBack">Go back!</a>
 </form>
+</fieldset></div></div>
 <jsp:include page="Footer.jsp"></jsp:include>	
 </body>
 </html>

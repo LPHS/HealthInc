@@ -8,9 +8,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Dependent Approval</title>
 </head>
+
+<style>
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    padding: 6px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: skyblue;
+    color: white;
+}
+
+body{
+	background-image:url("wood.jpg")
+
+}
+</style>
+
+
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>
-	<h2>Employee Approval</h2>
+	<div class="container">
+<div class="content" style="padding-left:20%; padding-right:20%; padding-top:7%; padding-bottom:7%; text-align:left; color:white;">
+<fieldset style=" background-color:grey; opacity: 0.7; filter: alpha(opacity=70); border-radius:25px;">
+	<h2><strong><center>Dependent Approval</center></strong></h2>
 	<table>
 		<tr>
 			<th>Employee Id</th>
@@ -33,8 +60,10 @@
 		<%
 			}
 		%>
-	</table>
-	<jsp:include page="Footer.jsp"></jsp:include>
+	</table><br>
 	<a href="/HealthInc/AdminController?source=adminBack">Go back!</a>
+	</fieldset></div></div>
+	<jsp:include page="Footer.jsp"></jsp:include>
+	
 </body>
 </html>

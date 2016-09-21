@@ -17,12 +17,137 @@ function populate(hiid,gender,relation){
 	
 }
 </script>
+<script>
+
+	function validate()
+	{
+
+	var name_company= document.getElementById("name_company").value;
+	var age= document.getElementById("age").value;
+	/* var address= document.getElementById("address").value;
+	var city= document.getElementById("city").value;
+	var state= document.getElementById("state").value;
+	var pin= document.getElementById("pin").value;
+	var std= document.getElementById("std").value;
+	var phone= document.getElementById("phone").value; */
+	var letters = /^[A-Za-z\s]+$/;
+	var lettersAndNumbers = /^[A-Za-z0-9]+$/;
+	var numbersWithDecimals = /^[0-9]+$/;
+	var ph =/^[0-9]{10}$/;
+	var emailCheck = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+	if(name_company==""||name_company==null){
+		alert('Please enter company Name');
+		return false;
+		}
+		if(!name_company.match(letters)){
+		alert('Company Name should contain only letters');
+		return false;
+		}
+		
+		if(age==null||age==""){
+			alert("please enter age");
+			return false;
+		}
+		if (isNaN(age) )
+		{
+			alert('Please enter a valid age');
+			return false;
+		}
+		/* if(address==""||address==null){
+			alert('Please enter hospital address');
+			return false;
+			}
+			if(!address.match(letters)){
+			alert('hospital address should contain only letters');
+			return false;
+			}
+			if(city==""||city==null){
+				alert('Please enter city Name');
+				return false;
+				}
+				if(!city.match(letters)){
+				alert('city Name should contain only letters');
+				return false;
+				}
+				if(state==""||state==null){
+					alert('Please enter state');
+					return false;
+					}
+					if(!state.match(letters)){
+					alert('state should contain only letters');
+					return false;
+					}
+					if(pin==null||pin==""){
+						alert("please enter pin");
+						return false;
+					}
+					if (isNaN(pin) )
+					{
+						alert('Please enter a valid pin');
+						return false;
+					}
+					if(pin.length!=6)
+					{
+							alert('pincode should have 6 digits');
+							return false;
+					}
+					if(pin==null||pin==""){
+						alert("please enter pin");
+						return false;
+					}
+					if(std==null||std==""){
+						alert("please enter pin");
+						return false;
+					}
+					
+					if (isNaN(std) )
+					{
+						alert('Please enter a valid std');
+						return false;
+					}
+					if(phone==""||phone==null){
+						alert('Please enter a Phone Number');
+						return false;
+						}
+						if(phone.length!=10){
+						alert('Phone Number should have 10 digits');
+						return false;
+						} */
+		} 
+</script>
 </head>
+
+<style>
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    padding: 6px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: skyblue;
+    color: white;
+}
+
+body{
+	background-image:url("wood.jpg")
+
+}
+</style>
+
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
+<div class="container">
+<div class="content" style="padding-left:20%; padding-right:20%;  text-align:left; color:white;">
+<fieldset style=" background-color:grey; opacity: 0.7; filter: alpha(opacity=70); border-radius:25px;">
 	<form action="/HealthInc/MasterController" method=post
 		onsubmit="return validate()">
-		<h2>Hospitalization Claims</h2>
+		<h2><strong><center>Hospitalization Claims</center></strong></h2><hr>
 		<table>
 			<%
 				EmployeeBean e = (EmployeeBean) request.getAttribute("emp");
@@ -140,7 +265,7 @@ function populate(hiid,gender,relation){
 			<tr>
 				<td>Reason for Injury-Alcohol:</td>
 				<td><input type="radio" name="injuryreason" value="yes"
-					checked="checked">Yes<br> <input type="radio"
+					checked="checked">Yes <input type="radio"
 					name="injuryreason" value="no">No<br></td>
 			</tr>
 
@@ -149,6 +274,20 @@ function populate(hiid,gender,relation){
 				<td><input type="text" name="total_claim" id="total_claim"></td>
 			</tr>
 
+<!-- 
+<tr>
+			<td>Upload documents:</td>
+<td>
+
+<input type="file" name="file" size="50" />
+<br />
+<input type="submit" value="Upload File" />
+
+</td>
+</tr>
+
+
+ -->
 			<tr>
 				<td><input type="submit" value="submit"><input
 					type="hidden" name="source" value="hosSubmit"></td>
@@ -157,6 +296,7 @@ function populate(hiid,gender,relation){
 		</table>
 		<a href="/HealthInc/MasterController?source=empBack">Go back!</a>
 	</form>
+	</fieldset></div></div>
 <jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

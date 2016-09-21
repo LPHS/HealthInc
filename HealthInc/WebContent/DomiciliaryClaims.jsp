@@ -57,11 +57,36 @@ function populate(hiid){
 }
 </script>
 </head>
+
+<style>
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    padding: 6px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: skyblue;
+    color: white;
+}
+
+body{
+	background-image:url("wood.jpg")
+
+}
+</style>
+
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>
-
+<div class="container">
+<div class="content" style="padding-left:20%; padding-right:20%; padding-top:7%; padding-bottom:7%; text-align:left; color:white;">
+<fieldset style=" background-color:grey; opacity: 0.7; filter: alpha(opacity=70); border-radius:25px;">
 	<form action="/HealthInc/MasterController" method=post onsubmit="return validate()">
-		<h2>Domiciliary Claims</h2>
+		<h2><strong><center>Domiciliary Claims</center></strong></h2><hr>
 		<table>
 			<tr>
 				<td>Employee Id</td>
@@ -136,24 +161,44 @@ function populate(hiid){
 			<tr>
 				<td>Injury Type:</td>
 				<td><select name="injurytype">
-						<option value="Ailment">Aliment</option>
+						<option value="Ailment">Ailment</option>
 						<option value="Disease">Disease</option>
 						<option value="Injury">Injury</option>
 						<option value="Contracted">Contracted</option>
 						<option value="Substain">Substain</option>
 				</select></td>
 			</tr>
+			
 
 			<tr>
 				<td>Total Claim Amount</td>
 				<td><input type="text" name="totalclaimamt" id="totalclaimamt"></td>
 			</tr>
-			<tr>
+			
+
+
+<tr>
+			<td>Upload documents:</td>			
+<td>
+
+<input type="file" name="file" size="50" />
+<br />
+<input type="submit" value="Upload File" />
+
+</td>
+</tr>
+
+
+
+	
+<tr>
 			<td><input type="submit" value="submit"><input type="hidden" name="source" value="domSubmit"></td>
 			<td><input type="reset" value="reset"></td></tr>
+	
 		</table>
 	</form>
 	<a href="/HealthInc/MasterController?source=empBack">Go back!</a>
+	</fieldset></div></div>
 	<jsp:include page="Footer.jsp"></jsp:include>
 </body>
 

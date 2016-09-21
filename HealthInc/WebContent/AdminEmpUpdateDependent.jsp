@@ -19,17 +19,33 @@ function calculateTotal() {
 </script>
 <script>
 function validate(){
+	var id= document.getElementById("id").value;
 	var benName= document.getElementById("ben_name").value;
+	var dob= document.getElementById("dob").value;
 	var polStDate= document.getElementById("policy_startdate").value; 
 	var polPeriod= document.getElementById("policy_period").value;
-	var letters = /^[A-Za-z\s]+$/;
+	var total_sum= document.getElementById("total_sum").value;
 	
+	var letters = /^[A-Za-z\s]+$/;
+	var lettersAndNumbers = /^[A-Za-z0-9]+$/;
+	var numbersWithDecimals = /^[0-9]+$/;
+	var ph =/^[0-9]{10}$/;
+	var emailCheck = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	
+	if(id==""||id==null){
+		alert('Please enter id');
+		return false;
+	}
 	if(benName==""||benName==null){
 		alert('Please enter Beneficiary Name');
 		return false;
 	}
 	if(!benName.match(letters)){
 		alert('Beneficary Name should contain only letters');
+		return false;
+	}
+	if (dob==""||dob==null){
+		alert('Please enter date of birth');
 		return false;
 	}
 	if (polStDate==""||polStDate==null){
@@ -44,38 +60,24 @@ function validate(){
 		alert('Please enter a valid policy period, policy period should be in years');
 		return false;
 	}
+	if(total_sum==null||total_sum==""){
+		alert("please enter total_sum");
+		return false;
+	}
+	
+	if (isNaN(total_sum) )
+	{
+		alert('Please enter a valid total_sum');
+		return false;
+	}
+	
 
 }
 </script>
 </head>
-<style>
-a:link, a:visited {
-    background-color: white;
-    color: black;
-    padding: 6px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
-
-
-a:hover, a:active {
-    background-color: skyblue;
-    color: white;
-}
-
-body{
-	background-image:url("wood.jpg")
-
-}
-</style>
-
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
-<div class="container">
-<div class="content" style="padding-left:25%; padding-right:25%; padding-top:7%; padding-bottom:7%; text-align:left; color:white;">
-<fieldset style=" background-color:grey; opacity: 0.7; filter: alpha(opacity=70); border-radius:25px;">
-<form name="dependents" action="/HealthInc/MasterController" onsubmit="return validate()" method="post">
+<form name="dependents" action="/HealthInc/AdminController" onsubmit="return validate()" method="post">
 <h2>Update Dependent Details</h2>
 <table>
 <tr>
@@ -143,8 +145,8 @@ body{
 <td><input type="submit" name="source" value="Update Dependent Details"></td>
 <td><input type="reset" value="reset"></td></tr>
 </table>
-</form></fieldset></div></div>
-<a href="/HealthInc/MasterController?source=empBack">Go back!</a>
+</form>
+<a href="/HealthInc/AdminController?source=adminBack">Go back!</a>
 <jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

@@ -16,8 +16,12 @@ function validate(){
 	var benName= document.getElementById("ben_name").value;
 	var polStDate= document.getElementById("policy_startdate").value; 
 	var polPeriod= document.getElementById("policy_period").value;
+    var total_sum= document.getElementById("total_sum").value;
 	var letters = /^[A-Za-z\s]+$/;
-	
+	var lettersAndNumbers = /^[A-Za-z0-9]+$/;
+	var numbersWithDecimals = /^[0-9]+$/;
+	var ph =/^[0-9]{10}$/;
+	var emailCheck = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	if(benName==""||benName==null){
 		alert('Please enter Beneficiary Name');
 		return false;
@@ -38,12 +42,51 @@ function validate(){
 		alert('Please enter a valid policy period, policy period should be in years');
 		return false;
 	}
+	if (total_sum==""||total_sum==null ){
+		alert('Please enter Total Sum Insured');
+		return false;
+		}
+		if (!(total_sum.match(numbersWithDecimals))){
+		alert('Total Sum Insured should include numbers or numbers with decimals');
+		return false;
+		/* if (isNaN(total_sum) ){
+			alert('Please enter a valid total Sum, total Sum should be in numbers');
+			return false; */
+		}
 
 }
 </script>
 </head>
+
+
+<style>
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    padding: 6px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: skyblue;
+    color: white;
+}
+
+body{
+	background-image:url("wood.jpg")
+
+}
+</style>
+
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
+
+<div class="container">
+<div class="content" style="padding-left:20%; padding-right:20%; padding-top:7%; padding-bottom:7%; text-align:left; color:white;">
+<fieldset style=" background-color:grey; opacity: 0.7; filter: alpha(opacity=70); border-radius:25px;">
 <form name="dependents" action="/HealthInc/MasterController" onsubmit="return validate()" method="post">
 <h2>Enter Details</h2>
 <table>
@@ -109,6 +152,7 @@ function validate(){
 </table>
 </form>
 <a href="/HealthInc/MasterController?source=empBack">Go back!</a>
+</fieldset></div></div>
 <jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

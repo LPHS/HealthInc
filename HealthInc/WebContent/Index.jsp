@@ -6,36 +6,64 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>EmpH Inc.</title>
 </head>
+
+<style>
+a:link, a:visited {
+    background-color: white;
+    color: grey;
+    padding: 9px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: skyblue;
+    color: white;
+}
+
+body{
+	background-image:url("good-health.jpg")
+
+}
+</style>
+
+
 <body>
+
 <%session.invalidate(); %>
-<div>
-<a href="/HealthInc/IndexController?source=registration">Click here to Register!</a>
-</div>
+
+<img style="margin-left:10%;" src="d6b751d75c50b98be47a56bd11106334.jpg" width="200" height="80"> &nbsp &nbsp &nbsp
+<a href="/HealthInc/IndexController?source=registration" style="margin-left:40%;"><strong>New User Register</strong></a> &nbsp &nbsp
+<a href="/HealthInc/IndexController?source=adminLoginRedirect"><strong>Admin Login</strong></a>
+
 <form action="/HealthInc/IndexController" method="post">
-<table>
+
+<br><br>
 <tr>
-<td>Emp Id :</td>
-<td><input type="text" name="id" id="id" ></td>
-</tr>
+<strong>&nbsp  Emp Id :</strong><br>&nbsp  &nbsp
+<input type="text" name="id" id="id" >
+</tr><br><br>
 <tr>
-<td>Password:</td>
-<td><input type="password" name="pass" id="pass" ></td>
-</tr>
-</table>
+<strong>&nbsp  Password:</strong><br>&nbsp  &nbsp
+<input type="password" name="pass" id="pass" >
+</tr><br><br>&nbsp  &nbsp
+
 <input type="submit" value="Login">
 <input type="hidden" name="source" value="empLogin">
 </form>
+<p style="color:white; font-size:64px;  padding-left:15%;"><b> Jiyo Life <br> &nbsp &nbsp &nbsp   Befikar</b></p>
 
-<div>
 <%Object msg=request.getAttribute("msg");
 	if(msg!=null){%>
 	<%=msg %>
 	<%} %>
-</div>
 
-<div>
-<a href="/HealthInc/IndexController?source=adminLoginRedirect">Admin Login!</a>
-</div>
+
+
+
+
 
 <jsp:include page="Footer.jsp"></jsp:include>
 </body>

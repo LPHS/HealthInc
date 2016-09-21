@@ -1,4 +1,3 @@
-<%@page import="bean.Hospital"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,21 +32,19 @@ body{
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
 <div class="container">
-<div class="content" style="padding-left:20%; padding-right:20%; padding-top:10%; padding-bottom:10%; text-align:left; color:white;">
+<div class="content" style="padding-left:25%; padding-right:25%; padding-top:7%; padding-bottom:7%; text-align:left; color:white;">
 <fieldset style=" background-color:grey; opacity: 0.7; filter: alpha(opacity=70); border-radius:25px;">
 <form action="/HealthInc/AdminController" method="post">
 <table>
 <tr>
-<td>Hospital Id</td>
+<td>Employee Id</td>
 <td><input type="text" name="id"></td>
 </tr>
 </table>
-<br><br>
-<input type="submit" name="source" value="Update Hospital">
-<input type="submit" name="source" value="Delete Hospital">
-</form><br>
+<br>
+<input type="submit" name="source" value="View Dependents">
 <a href="/HealthInc/AdminController?source=adminBack">Go back!</a>
-</fieldset></div></div>
+</form></fieldset></div></div>
 <jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>

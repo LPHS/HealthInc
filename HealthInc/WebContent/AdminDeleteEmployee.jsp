@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Employee Home</title>
+<title>Insert title here</title>
 </head>
 
 <style>
 a:link, a:visited {
     background-color: white;
     color: black;
-    padding: 15px 15px;
+    padding: 6px 15px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -34,33 +34,18 @@ body{
 <div class="container">
 <div class="content" style="padding-left:20%; padding-right:20%; padding-top:7%; padding-bottom:7%; text-align:left; color:white;">
 <fieldset style=" background-color:grey; opacity: 0.7; filter: alpha(opacity=70); border-radius:25px;">
+<form action="/HealthInc/AdminController" method="post">
 <table>
-<tr >
-<td colspan="3"><h2><strong>Profile Operations</strong></h2></td>
-</tr>
 <tr>
-<td><a href="/HealthInc/MasterController?source=empUpdate"><strong>Update Profile</strong></a></td>
-<td><a href="/HealthInc/MasterController?source=empDelete"><strong>Delete Profile</strong></a></td>
+<td>Employee Id</td>
+<td><input type="text" name="id"></td>
 </tr>
-<tr >
-<td colspan="3"><h2><strong>Dependent Operations</strong></h2></td>
-</tr>
-<tr>
-<td><a href="/HealthInc/MasterController?source=addDependent"><strong>Add Dependent</strong></a></td>
-<td colspan="2"><a href="/HealthInc/MasterController?source=viewDependents"><strong>View Dependents</strong></a></td>
+</table><br>
 
-</tr>
-<tr >
-<td colspan="3"><h2><strong>Claim Operations</strong></h2></td>
-</tr>
-<tr>
-<td><a href="/HealthInc/MasterController?source=domClaim"><strong>Domiciliary Claim</strong></a></td>
-<td><a href="/HealthInc/MasterController?source=hospClaim"><strong>Hospitalization Claim</strong></a></td>
+<input type="submit" name="source" value="Delete Employee"> &nbsp
+<a href="/HealthInc/AdminController?source=adminBack">Go back!</a>
+</form></fieldset></div></div>
 
-</tr>
-
-</table>
-</fieldset></div></div>
 <jsp:include page="Footer.jsp"></jsp:include>
 </body>
 </html>
