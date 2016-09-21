@@ -794,4 +794,38 @@ public class Dao {
 		else
 			System.out.println("Dependent not approved");
 	}
+	
+	public void setClaimStatus(int claimNo,double appAmt){
+		Connection con=null;
+		PreparedStatement st=null;
+		int a=0;
+		con=DbTransaction.getConnection();
+		try {
+			//setting status for hosclaim
+			st=con.prepareStatement("update HOSCLAIM set status=1,approvedAmt=? where hosclmid=?");
+			st.setDouble(1, appAmt);
+			st.setInt(2, claimNo);
+			a=st.executeUpdate();
+			if(a==1){
+				System.out.println("status set in hosclaim");
+			}else{
+				System.out.println("status not set in hosclaim");
+			}
+			
+			//setting status for domclaim
+			st=con.prepareStatement("update DOMCLAIM set status=1,approvedAmt=? where domClmId=?");
+			st.setDouble(1, appAmt);
+			st.setInt(2, claimNo);
+			a=st.executeUpdate();
+			if(a==1){
+				System.out.println("status set in domclaim");
+			}else{
+				System.out.println("status not set in domclaim");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

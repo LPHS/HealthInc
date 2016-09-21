@@ -29,7 +29,6 @@ public class AdminController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		doPost(request,response);
 	}
 
@@ -132,21 +131,6 @@ public class AdminController extends HttpServlet {
 				
 				}
 				
-				if(source.equals("claimApproval"))
-				{
-					ArrayList<ClaimBean> obj= new ArrayList<ClaimBean>();
-					obj=is.returnApprovalClaims();
-					if(obj.size()>0)
-					{
-						RequestDispatcher rd= request.getRequestDispatcher("AdminClaimAproval.jsp");
-						request.setAttribute("list", obj);
-						rd.forward(request, response);	
-					}
-					else{
-					response.sendRedirect("/HealthInc/NoClaim.jsp");
-					}
-					
-				}
 				if(source.equals("employeeApproval"))
 				{
 					ArrayList<EmployeeBean> empList=is.getEmpDetailApproval();
@@ -353,6 +337,21 @@ public class AdminController extends HttpServlet {
 						{	
 							response.sendRedirect("/HealthInc/AdminOpFail.jsp");
 						}
+				}
+				if(source.equals("claimApproval")){
+					RequestDispatcher rd=request.getRequestDispatcher("AdminClaimApproval.jsp");
+					ArrayList<ClaimBean> cbList=is.returnApprovalClaims();
+					request.setAttribute("cbList", cbList);
+					rd.forward(request, response);
+				}
+				if(source.equals("ApproveClaim")){
+					int claimNo=Integer.parseInt(request.getParameter("claimNo"));
+					double appAmt=Double.parseDouble(request.getParameter("appAmt"));
+					is.setClaimStatus(claimNo, appAmt);
+					RequestDispatcher rd=request.getRequestDispatcher("AdminClaimApproval.jsp");
+					ArrayList<ClaimBean> cbList=is.returnApprovalClaims();
+					request.setAttribute("cbList", cbList);
+					rd.forward(request, response);
 				}
 				if(source.equals("adminBack")){
 					response.sendRedirect("/HealthInc/AdminHome.jsp");

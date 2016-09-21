@@ -110,4 +110,9 @@ public class IndexService {
 	public void setDepStatus(int hid){
 		d.setDepStatus(hid);
 	}
+	
+	public void setClaimStatus(int claimNo,double appAmt){
+		d.setClaimStatus(claimNo, appAmt);
+	}
+
 }

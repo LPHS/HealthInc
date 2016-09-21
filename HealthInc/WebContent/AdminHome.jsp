@@ -42,6 +42,7 @@ body{
 
 <td><a href="/HealthInc/AdminController?source=employeeApproval">Employee Approvals</a></td>
 <td><a href="/HealthInc/AdminController?source=DependentApproval">Dependent Approvals</a></td>
+<td><a href="/HealthInc/AdminController?source=claimApproval">Claim Approvals</a></td>
 </tr>
 <tr >
 <td colspan="3"><h2><strong>Hospital Operations</strong></h2></td>
