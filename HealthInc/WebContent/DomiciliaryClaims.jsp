@@ -52,8 +52,8 @@ function validate(){
 	}
 }
 
-function populate(hiid){
-	document.getElementById("hiid").value=hiid;
+function populate(hid){
+	document.getElementById("hiid").value=hid;
 }
 </script>
 </head>
